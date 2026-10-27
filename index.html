@@ -394,6 +394,25 @@ mark.chg{background:var(--chg);color:var(--chgink);border-radius:3px;padding:0 2
 /* ---------- v13: vorschläge ---------- */
 .edbar .back{display:none}
 @media (max-width:640px){ .dh .bl,.dh .reg{display:none} .edbar .back{display:inline-flex} .edbar h1{flex-basis:calc(100% - 50px)} }
+/* ---------- v14: kompakte lernkarten ---------- */
+.lcard.rev{gap:10px}
+.lc-ask{font-size:15.5px}
+.lc-tt{font-size:16px}
+.lc-merke{font-size:13px;padding:6px 10px}
+.lrows{display:grid;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.lr{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:5px 10px;border-top:1px solid var(--line);font-size:13px;line-height:1.45}
+.lr:first-child{border-top:0}
+.lr:nth-child(even){background:color-mix(in srgb,var(--panel) 60%,transparent)}
+.lk{color:var(--mute);font-size:12px;font-weight:650;white-space:nowrap}
+.lv .sep{font-style:normal;color:var(--faint);margin:0 7px}
+.lc-bf summary,.lc-q summary{cursor:pointer;font-size:12.5px;color:var(--mute);font-weight:600}
+.lc-bfw{display:flex;gap:8px;align-items:flex-start;margin-top:5px;font-size:13px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 6px 6px 10px}
+.lc-bfw span{flex:1;min-width:0}
+.lc-bfw .copy{padding:2px 8px}
+.lc-qs{display:grid;gap:2px}
+.lc-q{margin:0}.lc-q div{padding:2px 0 4px 20px;color:var(--ink);font-size:13px}
+.lc-body{gap:8px}
+@media (max-width:640px){ .lr{grid-template-columns:1fr;gap:1px} }
 </style>
 </head>
 <body>
@@ -428,7 +447,7 @@ mark.chg{background:var(--chg);color:var(--chgink);border-radius:3px;padding:0 2
 </div>
 <div class="toast" id="toast"></div>
 <div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
-<script type="text/plain" id="data" data-saved="2026-10-27T11:06:14+00:00">
+<script type="text/plain" id="data" data-saved="2026-10-27T11:11:33+00:00">
 === CT | Kopf/Hals | Schädel nativ | cct ccct schädel kopf blutung | fav
 ## Standardbefund
 Technik: Natives Schädel-CT.
@@ -448,6 +467,13 @@ Kein Nachweis einer Fraktur oder suspekter ossärer Läsionen.
 ## *Textbausteine
 - Bds. vereinzelte, periventrikuläre sowie subkortikal gelegene hypodense Marklagerläsionen, in erster Linie im Rahmen einer mikroangiopathischen Leukenzephalopathie zu werten. ⟶ Reguläre Struktur, Form und Dichte des Gehirns.
 - Erweiterte innere und äußere Liquorräume ex vacuo.
+### Blutung
+- Hypodenser bis isodenser, sichelförmiger extraaxialer Saum [rechts/links] frontoparietal mit maximal [XXX] mm Breite, vereinbar mit einem [akuten/subakuten/chronischen] Subduralhämatom. Mittellinienverlagerung um [XXX] mm nach [rechts/links]. ⟶ Mittelständiger Interhemisphärenspalt.
+- Hyperdenses Material in den basalen Zisternen und den Sulci [rechts/links] betont, V.a. Subarachnoidalblutung. ⟶ Die basalen Zisternen frei.
+### Ischämie
+- Hypodenses Areal im [XXX]-Stromgebiet [rechts/links] mit aufgehobener Rinden-Mark-Differenzierung, vereinbar mit einer [subakuten/älteren] Infarktdemarkierung. ⟶ Regelrechte Rinden-Mark-Differenzierung.
+### NNH/Mastoid
+- Mukosaverdickung bzw. Flüssigkeitsspiegel in [Sinus maxillaris/Sinus frontalis/Cellulae ethmoidales/Sinus sphenoidalis] [rechts/links/bds.], vereinbar mit einer Sinusitis. ⟶ Die NNH und Mastoidzellen regelrecht belüftet.
 
 === CT | Kopf/Hals | NNH nativ | ctnnh nasennebenhöhlen sinus keros
 ## Standardbefund
@@ -3388,9 +3414,9 @@ const TR_RULES = [
 "Nur ein JSON-Array (kein Markdown) der inhaltlich relevanten Korrekturen gegenüber meinem Original – aus Warnung, Version 1 und Version 2 –, höchstens 6, jeweils {\"k\":\"Kategorie\",\"t\":\"kurz: alt → neu bzw. was fehlte\"}. Kategorie genau eine aus: Seite, Anatomie, Widerspruch, Terminologie, Rechtschreibung, Formulierung, Fehlende Angabe, Klassifikation/Empfehlung, Beurteilung. Reine Kosmetik weglassen. Nichts zu korrigieren: [].",
 "",
 "@@KARTE",
-"Eine Lernkarte nur, wenn der Fall lehrreich ist (relevante Pathologie, Klassifikation, typischer Fallstrick oder seltenere Diagnose). Bei Normalbefund oder reiner Routine genau: KEINE",
-"Sonst nur ein JSON-Objekt (kein Markdown) mit genau diesen Feldern: {\"titel\":\"kurzer Kartentitel (Diagnose/Thema)\",\"mod\":\"CT|MRT|RÖ|SONO|DL|INT\",\"thema\":\"Organ/Region\",\"fall\":\"1–2 Sätze, worum es in diesem Fall ging (anonym)\",\"zeichen\":[\"typisches Bildzeichen\"],\"dd\":[\"Differenzialdiagnose mit kurzer Abgrenzung\"],\"klass\":[\"Klassifikation, Grenz- oder Normwert mit Version/Jahr\"],\"fallstricke\":[\"Pitfall\"],\"befund\":\"Mustersatz für den Befund\",\"merke\":\"ein Merksatz oder eine Eselsbrücke\",\"fragen\":[{\"f\":\"Prüfungsfrage\",\"a\":\"knappe Antwort\"},{\"f\":\"…\",\"a\":\"…\"}]}",
-"Jede Liste 2–4 kurze Punkte, nur gesicherte Fakten.",
+"Eine Lernkarte nur, wenn der Fall wirklich lehrreich ist: eine relevante, nicht alltägliche Pathologie, eine leitlinien- oder klassifikationsrelevante Entscheidung, ein typischer gefährlicher Fallstrick oder eine seltenere Diagnose. KEINE Karte bei Normalbefund, Routine und häufigen Nebenbefunden (z. B. degenerative Veränderungen, einfache Zysten, Steatose, Divertikulose, Arteriosklerose) und wenn es zum Thema schon eine Lernkarte gibt (Liste unten). Im Zweifel keine Karte – dann genau: KEINE",
+"Sonst nur ein JSON-Objekt (kein Markdown) mit genau diesen Feldern: {\"titel\":\"kurzer Kartentitel (Diagnose/Thema)\",\"mod\":\"CT|MRT|RÖ|SONO|DL|INT\",\"thema\":\"Organ/Region\",\"fall\":\"1 kurzer Satz zum Fall (anonym)\",\"zeichen\":[\"Bildzeichen\"],\"dd\":[\"DD – Abgrenzung in 3–5 Wörtern\"],\"klass\":[\"Klassifikation/Grenzwert mit Jahr\"],\"fallstricke\":[\"Pitfall\"],\"befund\":\"1 Mustersatz für den Befund\",\"merke\":\"Merksatz\",\"fragen\":[{\"f\":\"Prüfungsfrage\",\"a\":\"knappe Antwort\"}]}",
+"Kurz und knapp: jede Liste höchstens 3 Punkte mit je höchstens 10 Wörtern (klass und fallstricke gern nur 1 Punkt oder leer), Merksatz höchstens 12 Wörter, Befund 1 Satz, 1–2 Prüfungsfragen. Nur gesicherte Fakten.",
 "",
 "Regeln für Version 1 und 2:",
 "- Zeilenumbrüche und Leerzeilen positionsgenau wie im Original (Version 2 darf Sätze straffen, behält aber die Absatzstruktur).",
@@ -3487,7 +3513,7 @@ async function trRun(force){
   if (S.tr.tier === "deep") opts.modelTier = "complex"; else { opts.modelTier = "default"; opts.effort = "low"; }
   if (force) opts.cache = false;
   try {
-    const r = await S.ai(TR_RULES + "\n\nORIGINALBEFUND:\n<<<\n" + text + "\n>>>", opts);
+    const r = await S.ai(TR_RULES + cardTitlesHint() + "\n\nORIGINALBEFUND:\n<<<\n" + text + "\n>>>", opts);
     S.tr.raw = r.text; S.tr.trunc = !!r.truncated; S.tr.card = null; try { learnFromCheck(r.text); } catch(x){} trAddHist(text, r.text);
   } catch(e){
     if (e && e.code === "refused") S.tr.raw = ""; else S.tr.raw = (e && e.text) || S.tr.raw;
@@ -3897,13 +3923,16 @@ function histAdd(input, raw, card){
 }
 
 /* --- lernkarten --- */
-const cardArr = v => (Array.isArray(v) ? v : v ? [v] : []).map(x => String(x).trim()).filter(Boolean).slice(0, 6);
+const cardArr = v => (Array.isArray(v) ? v : v ? [v] : []).map(x => String(x).trim()).filter(Boolean).slice(0, 3);
+const normT = x => String(x || "").toLowerCase().replace(/[^a-zäöüß0-9]+/g, " ").trim();
+const findCard = titel => { const n = normT(titel); return n ? [...S.cards.values()].find(c => normT(c.titel) === n) : null; };
+function cardTitlesHint(){ const t = [...S.cards.values()].sort((a, b) => (b.ts || 0) - (a.ts || 0)).slice(0, 80).map(c => c.titel); return t.length ? "\n\nSchon vorhandene Lernkarten (dazu keine neue Karte): " + t.join("; ") : ""; }
 function cardAdd(k){
   const c = {id:"c" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), ts:Date.now(), src:"trainer",
     titel:String(k.titel).slice(0, 140), mod:String(k.mod || "").toUpperCase().slice(0, 8), thema:String(k.thema || "").slice(0, 90), fall:String(k.fall || "").slice(0, 500),
     zeichen:cardArr(k.zeichen), dd:cardArr(k.dd), klass:cardArr(k.klass), fallstricke:cardArr(k.fallstricke),
     befund:String(k.befund || "").slice(0, 800), merke:String(k.merke || "").slice(0, 300),
-    fragen:(Array.isArray(k.fragen) ? k.fragen : []).filter(x => x && x.f).slice(0, 3).map(x => ({f:String(x.f), a:String(x.a || "")})),
+    fragen:(Array.isArray(k.fragen) ? k.fragen : []).filter(x => x && x.f).slice(0, 2).map(x => ({f:String(x.f), a:String(x.a || "")})),
     box:0, due:Date.now(), reviews:0, last:0};
   S.cards.set(c.id, c); saveCardsLocal();
   if (SY.on) dbq("card:" + c.id, () => P.cards().doc(c.id).set(c));
@@ -3940,23 +3969,23 @@ function learnFromCheck(raw){
   if (Array.isArray(fe)) errAdd(fe.filter(x => x && (x.k || x.t)).slice(0, 8).map(x => ({k:normCat(x.k), t:String(x.t || "").slice(0, 220)})));
   else if (fe === "none") errAdd([]);
   const kc = parseJSONish(p.KARTE);
-  if (kc && typeof kc === "object" && !Array.isArray(kc) && kc.titel){ const c = cardAdd(kc); S.tr.card = {id:c.id, titel:c.titel}; }
+  if (kc && typeof kc === "object" && !Array.isArray(kc) && kc.titel){ const ex = findCard(kc.titel); if (ex) S.tr.card = {id:ex.id, titel:ex.titel, dup:true}; else { const c = cardAdd(kc); S.tr.card = {id:c.id, titel:c.titel}; } }
   else S.tr.card = "none";
 }
 function learnChip(){
   if (S.tr.busy || !S.tr.raw) return "";
   const c = S.tr.card;
-  if (c && c.id) return `<div class="lchip">🎴 Lernkarte gespeichert: <b>${esc(c.titel)}</b><button class="add" data-tolearn="${esc(c.id)}">Ansehen</button></div>`;
+  if (c && c.id) return `<div class="lchip">🎴 ${c.dup ? "Dazu gibt es schon eine Lernkarte" : "Lernkarte gespeichert"}: <b>${esc(c.titel)}</b><button class="add" data-tolearn="${esc(c.id)}">Ansehen</button></div>`;
   if (c === "none") return `<div class="lchip dim">🎴 Routinefall – keine Lernkarte.${S.ai ? ' <button class="add" id="tr-card">Trotzdem Karte erstellen</button>' : ""}</div>`;
   return "";
 }
-const CARD_FIELDS = '{"titel":"kurzer Kartentitel (Diagnose/Thema)","mod":"CT|MRT|RÖ|SONO|DL|INT","thema":"Organ/Region","fall":"1–2 Sätze, worum es in diesem Fall ging (anonym)","zeichen":["typisches Bildzeichen"],"dd":["Differenzialdiagnose mit kurzer Abgrenzung"],"klass":["Klassifikation, Grenz- oder Normwert mit Version/Jahr"],"fallstricke":["Pitfall"],"befund":"Mustersatz für den Befund","merke":"ein Merksatz oder eine Eselsbrücke","fragen":[{"f":"Prüfungsfrage","a":"knappe Antwort"},{"f":"…","a":"…"}]}';
+const CARD_FIELDS = '{"titel":"kurzer Kartentitel (Diagnose/Thema)","mod":"CT|MRT|RÖ|SONO|DL|INT","thema":"Organ/Region","fall":"1 kurzer Satz zum Fall (anonym)","zeichen":["Bildzeichen"],"dd":["DD – Abgrenzung in 3–5 Wörtern"],"klass":["Klassifikation/Grenzwert mit Jahr"],"fallstricke":["Pitfall"],"befund":"1 Mustersatz für den Befund","merke":"Merksatz","fragen":[{"f":"Prüfungsfrage","a":"knappe Antwort"}]}';
 async function trForceCard(){
   if (!S.ai) return;
   const p = trParse(S.tr.raw), b = $("#tr-card");
   if (b){ b.disabled = true; b.innerHTML = '<span class="spin"></span> erstellt …'; }
   try {
-    const k = await S.ai.json("Erstelle zu diesem radiologischen Fall eine kompakte Lernkarte für einen Assistenzarzt in der Facharztausbildung (Österreich), auf Deutsch. Antworte nur mit einem JSON-Objekt mit genau diesen Feldern:\n" + CARD_FIELDS + "\nJede Liste 2–4 kurze Punkte. Nur gesicherte Fakten, Klassifikationen mit Version/Jahr.\n\nBEFUND:\n<<<\n" + trClean(p.V2 || S.tr.input) + "\n>>>", {modelTier:"default"});
+    const k = await S.ai.json("Erstelle zu diesem radiologischen Fall eine kompakte Lernkarte für einen Assistenzarzt in der Facharztausbildung (Österreich), auf Deutsch. Antworte nur mit einem JSON-Objekt mit genau diesen Feldern:\n" + CARD_FIELDS + "\nKurz und knapp: jede Liste höchstens 3 Punkte mit je höchstens 10 Wörtern, Merksatz höchstens 12 Wörter, Befund 1 Satz, 1–2 Prüfungsfragen. Nur gesicherte Fakten, Klassifikationen mit Jahr.\n\nBEFUND:\n<<<\n" + trClean(p.V2 || S.tr.input) + "\n>>>", {modelTier:"default"});
     if (k && k.titel){
       const c = cardAdd(k); S.tr.card = {id:c.id, titel:c.titel}; trSave();
       const h = S.hist.find(x => x.input === S.tr.input); if (h){ h.card = S.tr.card; _storeSet("trhist", S.hist.slice(0, 12)); if (SY.on) dbq("checks", () => P.checks().doc("h" + h.ts).set(h)); }
@@ -3973,12 +4002,13 @@ $("#trainer").addEventListener("click", e => {
 
 /* --- bereich „lernen“ --- */
 const modCol = m => col(MODMAP[m] || (MODS.includes(m) ? m : "CT"));
-function cardBody(c){
-  const li = (t, arr) => arr && arr.length ? `<div class="lc-s"><div class="lc-h">${t}</div><ul>${arr.map(x => `<li>${mdInline(x)}</li>`).join("")}</ul></div>` : "";
-  return `<div class="lc-grid">${li("👁 Bildzeichen", c.zeichen)}${li("🔀 Differenzialdiagnosen", c.dd)}${li("📏 Klassifikation & Werte", c.klass)}${li("⚠️ Fallstricke", c.fallstricke)}</div>` +
-    (c.befund ? `<div class="codeb"><div class="cbh"><span class="note">Befundsatz</span><button class="copy" data-lcp="${esc(c.id)}">📋 Kopieren</button></div><pre>${esc(c.befund)}</pre></div>` : "") +
-    (c.merke ? `<div class="lc-merke">💡 ${mdInline(c.merke)}</div>` : "") +
-    ((c.fragen || []).length ? `<div class="lc-s"><div class="lc-h">❓ Prüfungsfragen</div>${c.fragen.map(q => `<details class="lc-q"><summary>${mdInline(q.f)}</summary><div>${mdInline(q.a)}</div></details>`).join("")}</div>` : "");
+function cardBody(c, noQ){
+  const row = (ic, lab, arr) => arr && arr.length ? `<div class="lr"><span class="lk">${ic} ${lab}</span><span class="lv">${arr.slice(0, 3).map(x => mdInline(x)).join('<i class="sep">·</i>')}</span></div>` : "";
+  let h = (c.merke ? `<div class="lc-merke">💡 ${mdInline(c.merke)}</div>` : "") +
+    `<div class="lrows">${row("👁", "Zeichen", c.zeichen)}${row("🔀", "DD", c.dd)}${row("📏", "Werte", c.klass)}${row("⚠️", "Falle", c.fallstricke)}</div>`;
+  if (c.befund) h += `<details class="lc-bf"><summary>Befundsatz</summary><div class="lc-bfw"><span>${esc(c.befund)}</span><button class="copy" data-lcp="${esc(c.id)}" title="Kopieren">📋</button></div></details>`;
+  if (!noQ && (c.fragen || []).length) h += `<div class="lc-qs">${c.fragen.slice(0, 2).map(q => `<details class="lc-q"><summary>❓ ${mdInline(q.f)}</summary><div>${mdInline(q.a)}</div></details>`).join("")}</div>`;
+  return h;
 }
 const dueLabel = c => (c.due || 0) <= Date.now() ? "fällig" : "in " + Math.max(1, Math.round(((c.due || 0) - Date.now()) / DAY)) + " T.";
 function lnDueHtml(due){
@@ -3992,7 +4022,7 @@ function lnDueHtml(due){
   if (c.fall) h += `<div class="lc-fall">${mdInline(c.fall)}</div>`;
   h += `<div class="lc-ask">${q ? mdInline(q.f) : "Diagnose, typische Bildzeichen, DD und Klassifikation?"}</div>`;
   if (!S.ln.show) h += `<div class="acts"><button class="copy" id="ln-show">Antwort zeigen <span class="kh2">Leertaste</span></button></div>`;
-  else h += (q ? `<div class="lc-ans">${mdInline(q.a)}</div>` : "") + `<div class="lc-tt">${esc(c.titel)}</div>` + cardBody(c) +
+  else h += (q ? `<div class="lc-ans">${mdInline(q.a)}</div>` : "") + `<div class="lc-tt">${esc(c.titel)}</div>` + cardBody(c, true) +
     `<div class="grade"><button data-g="0" class="g0">😕 Nochmal<span class="kh2">1 · 10 Min.</span></button><button data-g="1" class="g1">🙂 Gewusst<span class="kh2">2 · ${LBOX[Math.min(LBOX.length - 1, (c.box || 0) + 1)]} T.</span></button><button data-g="2" class="g2">😎 Leicht<span class="kh2">3 · ${LBOX[Math.min(LBOX.length - 1, (c.box || 0) + 2)]} T.</span></button></div>`;
   return h + `</div>`;
 }
