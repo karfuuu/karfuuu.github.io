@@ -556,6 +556,94 @@ body.dragsort,body.dragsort *{cursor:grabbing!important;user-select:none!importa
 .cllink.nolink{cursor:default;text-decoration:none}
 .clu .hrm{font-size:11px;color:var(--faint)}
 @media (max-width:640px){ .clpair{grid-template-columns:1fr} #tr-beu{flex:1} }
+/* ---------- v17 ---------- */
+.scard{--sc:var(--t-ok);display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;background:radial-gradient(120% 140% at 0% 0%,color-mix(in srgb,var(--MRT) 16%,var(--card)) 0%,var(--card) 55%);border:1px solid color-mix(in srgb,var(--MRT) 30%,var(--line));border-radius:16px;padding:14px 18px;position:relative;overflow:hidden}
+.scard::after{content:"";position:absolute;inset:auto -40px -60px auto;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--p-top) 22%,transparent),transparent 70%);pointer-events:none}
+.scard.tone-mid{--sc:var(--t-mid)} .scard.tone-warn{--sc:var(--t-warn)} .scard.tone-bad{--sc:var(--t-bad)}
+.scard.tone-ok,.scard.tone-mid,.scard.tone-warn,.scard.tone-bad{background-color:transparent}
+.sring .sr-track{fill:none;stroke:color-mix(in srgb,var(--ink) 9%,transparent);stroke-width:9}
+.sring .sr-val{fill:none;stroke-width:9;stroke-linecap:round}
+.sring .sr-num{text-anchor:middle;font:800 27px ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:var(--ink);letter-spacing:-.02em}
+.sring .sr-sub{text-anchor:middle;font:600 10px ui-sans-serif,-apple-system,sans-serif;fill:var(--mute)}
+.sc-body{display:grid;gap:8px;min-width:0;position:relative;z-index:1}
+.sc-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.sc-lab{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
+.sc-grade{font-size:19px;font-weight:800;color:var(--sc);letter-spacing:-.01em}
+.sc-delta{font-size:12px;font-weight:650;color:var(--mute);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:1px 9px}
+.sc-delta.up{color:var(--t-ok);border-color:color-mix(in srgb,var(--t-ok) 40%,var(--line))}
+.sc-delta.down{color:var(--t-warn);border-color:color-mix(in srgb,var(--t-warn) 40%,var(--line))}
+.sc-bars{display:grid;gap:6px}
+.sc-bar{display:grid;grid-template-columns:140px minmax(0,1fr) 26px;align-items:center;gap:10px;font-size:12.5px;color:var(--mute)}
+.sc-bar i{height:7px;border-radius:999px;background:color-mix(in srgb,var(--ink) 8%,transparent);overflow:hidden;display:block}
+.sc-bar u{display:block;height:100%;width:var(--w);border-radius:999px;background:linear-gradient(90deg,var(--p-top),var(--MRT) 60%,var(--CT));text-decoration:none}
+.sc-bar em{font-style:normal;text-align:right;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.sc-bar.weak span{color:var(--t-warn);font-weight:650}
+.sc-bar.weak u{background:linear-gradient(90deg,var(--t-warn),var(--p-fav))}
+.sc-tip{font-size:13px;line-height:1.45;color:var(--ink);background:color-mix(in srgb,var(--panel) 70%,transparent);border-radius:10px;padding:6px 10px}
+@media (prefers-reduced-motion:no-preference){
+  .sring.anim .sr-val{animation:scring 1s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes scring{from{stroke-dashoffset:var(--c)}to{stroke-dashoffset:var(--off)}}
+  .sc-bar u{animation:scbar .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,0ms)}
+  @keyframes scbar{from{width:0}to{width:var(--w)}}
+}
+.tipb{display:inline-flex;gap:4px;align-items:center}
+.rp{text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.lc-tt .rp{font-size:12px;font-weight:500;vertical-align:middle;margin-left:6px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px}
+.ptile{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.ptile b{font-size:28px;line-height:1;font-weight:800;display:block}
+.ptile span{font-size:12.5px;color:var(--mute);display:block}
+.ptile em{font-style:normal;font-size:11.5px;color:var(--faint)}
+.pt-ic{font-size:30px;filter:grayscale(1) opacity(.5)}
+.pstreak.on{background:radial-gradient(120% 140% at 0% 0%,color-mix(in srgb,var(--Röntgen) 20%,var(--card)),var(--card) 60%);border-color:color-mix(in srgb,var(--Röntgen) 40%,var(--line))}
+.pstreak.on .pt-ic{filter:none}
+.pstreak.on b{color:var(--Röntgen)}
+.pstrip{display:grid;gap:6px}
+.pstrip>div{display:grid;grid-template-columns:repeat(21,1fr);gap:4px}
+.pstrip i{height:14px;border-radius:4px;background:color-mix(in srgb,var(--ink) 7%,transparent)}
+.pstrip i.on{background:linear-gradient(180deg,var(--p-fav),var(--Röntgen))}
+.pstrip i.today{outline:2px solid color-mix(in srgb,var(--Röntgen) 55%,transparent);outline-offset:1px}
+.ptrend{padding:8px 10px 4px}
+.trend{width:100%;height:auto;max-height:260px;display:block;overflow:visible}
+.trend .tg{stroke:var(--line);stroke-dasharray:3 4}
+.trend .tl{font:10px ui-sans-serif,sans-serif;fill:var(--faint);text-anchor:end}
+.trend .tln{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.trend .tma{fill:none;stroke:var(--mute);stroke-width:1.5;stroke-dasharray:5 5;vector-effect:non-scaling-stroke;opacity:.7}
+.trend .td{fill:var(--card);stroke:var(--MRT);stroke-width:2;vector-effect:non-scaling-stroke}
+.trend .td.last{fill:var(--MRT)}
+.pdims{padding:10px 12px}
+.pdims .sc-bar{grid-template-columns:minmax(120px,210px) minmax(0,1fr) 30px}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.badge2{display:grid;gap:2px;justify-items:start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;opacity:.62}
+.badge2 .bic{font-size:22px;filter:grayscale(1);margin-bottom:2px}
+.badge2 b{font-size:13px}
+.badge2 .bd{font-size:11.5px;color:var(--mute);line-height:1.35}
+.badge2 .bp{width:100%;height:4px;border-radius:999px;background:color-mix(in srgb,var(--ink) 8%,transparent);overflow:hidden;margin-top:5px}
+.badge2 .bp i{display:block;height:100%;background:var(--MRT);border-radius:999px}
+.badge2 .bn{font-size:10.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+.badge2.ok{opacity:1;border-color:color-mix(in srgb,var(--p-fav) 50%,var(--line));background:radial-gradient(130% 120% at 0% 0%,color-mix(in srgb,var(--p-fav) 16%,var(--card)),var(--card) 65%)}
+.badge2.ok .bic{filter:none}
+.hstreak{color:var(--Röntgen);font-weight:650}
+.ilab.itop{color:var(--p-fav);background:color-mix(in srgb,var(--p-fav) 10%,var(--panel))}
+.item.itopi{background:color-mix(in srgb,var(--p-fav) 5%,transparent)}
+.icnt{flex:none;font-size:11px;font-weight:650;color:var(--p-fav);padding-top:2px;font-variant-numeric:tabular-nums}
+.item.itopi:hover .ic{opacity:0}
+.nw{text-decoration:underline dotted color-mix(in srgb,var(--CT) 55%,transparent);text-underline-offset:3px;text-decoration-thickness:1.5px}
+.nw:hover{background:color-mix(in srgb,var(--CT) 10%,transparent);border-radius:3px}
+.nwtip{position:fixed;z-index:20;display:none;gap:3px;background:var(--bg);color:var(--ink);border:1px solid color-mix(in srgb,var(--CT) 40%,var(--line2));border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:8px 11px;font-size:12.5px;line-height:1.45;pointer-events:none}
+.nwtip.on{display:grid}
+.nwtip b{font-size:12.5px;color:var(--CT)}
+.nwtip em{font-style:normal;font-size:10.5px;color:var(--faint);margin-top:2px}
+.lxfoot{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 2px;padding-top:8px;border-top:1px dashed var(--line)}
+.lxsrc{display:grid;gap:8px;margin-top:8px;padding:9px 11px;border-radius:10px;background:color-mix(in srgb,var(--m-lex) 7%,var(--panel));border:1px solid color-mix(in srgb,var(--m-lex) 25%,var(--line))}
+.lxsh{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--m-lex)}
+.lxs{display:grid;gap:1px}
+.lxst{font-weight:600;color:var(--ink)!important;text-decoration:none;line-height:1.4}
+.lxst:hover{text-decoration:underline}
+.lxsm{font-size:11.5px;color:var(--mute)}
+.lxsm a{color:var(--m-lex)}
+.lxsw{font-size:12.5px;color:var(--ink)}
+@media (max-width:640px){ .sc-bar{grid-template-columns:100px minmax(0,1fr) 22px} .scard{grid-template-columns:1fr;justify-items:center;text-align:left} .sc-body{width:100%} .ptile b{font-size:24px} .pstrip>div{gap:3px} #learn .ocard .oh .note{display:none} .pdims .sc-bar{grid-template-columns:118px minmax(0,1fr) 28px} }
 </style>
 </head>
 <body>
@@ -592,7 +680,7 @@ body.dragsort,body.dragsort *{cursor:grabbing!important;user-select:none!importa
 </div>
 <div class="toast" id="toast"></div>
 <div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
-<script type="text/plain" id="data" data-saved="2026-10-27T16:45:30+00:00">
+<script type="text/plain" id="data" data-saved="2026-10-28T15:39:06+00:00">
 === CT | Kopf/Hals | Schädel nativ | cct ccct schädel kopf blutung | fav
 ## Standardbefund
 Technik: Natives Schädel-CT.
@@ -2120,6 +2208,10 @@ Die Beckengefäße normkalibrig.
 ## %fleischner
 > Nur für Zufallsbefunde bei Patienten ≥ 35 J. – nicht bei bekanntem Malignom, Immunsuppression oder im Lungenkrebs-Screening (dort Lung-RADS).
 
+=== CT | Klassifikationen | KM-Gabe – eGFR, Metformin & Allergie | km kontrastmittel egfr gfr kreatinin niere nierenfunktion metformin allergie prämedikation hyperthyreose esur rechner
+## %kmgfr
+> Richtwerte nach ESUR – die SOP deines Hauses hat Vorrang. eGFR möglichst aktuell (bei akuter Erkrankung vom selben Tag).
+
 === CT | Klassifikationen | Bosniak 2019 – zystische Nierenläsion | bosniak nierenzyste zyste niere rechner
 ## %bosniak
 > Gilt für zystische Nierenläsionen im KM-CT bzw. Nierenmassen-Protokoll. Knoten = konvexe Vorwölbung ≥ 4 mm mit stumpfem Winkel oder jede Vorwölbung mit spitzem Winkel.
@@ -2651,7 +2743,7 @@ function renderDetail(keep){
   const sideSw = S.hasSide ? `<span class="sidesw" title="Seite für alle [rechts/links]-Felder (Tasten R / L)">Seite <button data-side="rechts" class="${S.side==="rechts"?"on":""}">re</button><button data-side="links" class="${S.side==="links"?"on":""}">li</button></span>` : "";
   const cbar = (n, lbl) => `<div class="cardbar"><span class="lbl">${lbl}</span>${hasFields(S.units[n].text) ? `<button class="add" data-rst="${n}" title="Ausgefüllte Felder zurücksetzen"${Object.keys(S.fill[S.units[n].key]||{}).length?"":" hidden"}>↺</button>` : ""}${addBtn(n)}<button class="copy" data-cu="${n}">📋 Kopieren</button></div>`;
   const fh = n => hasFields(S.units[n].text) ? `<div class="fillhint">✎ Felder direkt ausfüllen · Enter = nächstes Feld · Strg+Enter = kopieren · [optional] anklicken = übernehmen/weglassen</div>` : "";
-  let h = `<div class="dh"><button class="iconbtn back" id="back">←</button>${regIcon(t.region, "dh-ri")}<span class="badge" style="background:${col(t.mod)}">${esc(SHORT[t.mod])}</span><h1 title="${esc(t.title)}">${esc(t.title)}</h1><span class="reg">${esc(t.region)}</span>${sideSw}<button class="star${isFav(t)?" on":""}" id="star" title="Favorit (F)">${isFav(t)?"★":"☆"}</button><button class="mini" id="lexbtn" title="Im Lexikon nachschlagen">📚</button>${S.canEdit?'<button class="mini" id="sugbtn" title="Häufige Formulierungen & Floskeln für diese Vorlage vorschlagen – an- und abwählbar">✨<span class="bl"> Vorschläge</span></button>':""}${S.canEdit && S.vh.some(v => v.k === tkey(t)) ? '<button class="mini" id="vhbtn" title="Versionsverlauf – frühere Fassungen ansehen & wiederherstellen">🕘</button>' : ""}${S.canEdit?'<button class="mini" id="editbtn" title="Diese Vorlage bearbeiten">✏️ Bearbeiten</button>':""}</div><div class="body">`;
+  let h = `<div class="dh"><button class="iconbtn back" id="back">←</button>${regIcon(t.region, "dh-ri")}<span class="badge" style="background:${col(t.mod)}">${esc(SHORT[t.mod])}</span><h1 title="${esc(t.title)}">${esc(t.title)}</h1><span class="reg">${esc(t.region)}</span>${sideSw}<button class="star${isFav(t)?" on":""}" id="star" title="Favorit (F)">${isFav(t)?"★":"☆"}</button><button class="mini" id="lexbtn" title="Im Lexikon nachschlagen">📚</button>${rpLink(t.title, '🔗<span class="bl"> Radiopaedia</span>', "mini")}${S.canEdit?'<button class="mini" id="sugbtn" title="Häufige Formulierungen & Floskeln für diese Vorlage vorschlagen – an- und abwählbar">✨<span class="bl"> Vorschläge</span></button>':""}${S.canEdit && S.vh.some(v => v.k === tkey(t)) ? '<button class="mini" id="vhbtn" title="Versionsverlauf – frühere Fassungen ansehen & wiederherstellen">🕘</button>' : ""}${S.canEdit?'<button class="mini" id="editbtn" title="Diese Vorlage bearbeiten">✏️ Bearbeiten</button>':""}</div><div class="body">`;
   const secs = t.sections;
   for (let i = 0; i < secs.length; i++){
     const s = secs[i];
@@ -2675,6 +2767,7 @@ function renderDetail(keep){
     }
     if (s.type === "items"){
       h += `<div class="sec"><div class="sech">${esc(s.title)}</div><div class="items">`;
+      if (i === secs.findIndex(x => x.type === "items")) h += topItemsHtml(t, i);
       s.groups.forEach((g, gi) => {
         if (g.label) h += `<div class="ilab">${esc(g.label)}</div>`;
         g.items.forEach((it, ii) => {
@@ -3270,7 +3363,7 @@ const resolveText = (text, f) => collapse(resolveLines(text, f)).join("\n");
 function fillHtml(toks, f, n){
   let h = "";
   for (const tk of toks){
-    if (tk.t === "s"){ h += esc(tk.v); continue; }
+    if (tk.t === "s"){ h += nwWrap(tk.v); continue; }
     const v = f[tk.i];
     if (tk.t === "x"){ const val = v || ""; h += `<input class="phin${val ? " filled" : ""}" data-fu="${n}" data-fp="${tk.i}" value="${esc(val)}" placeholder="XXX" size="${Math.max(3, val.length + 1)}" autocomplete="off" spellcheck="false" aria-label="Platzhalter ausfüllen">`; }
     else if (tk.t === "c"){
@@ -3556,7 +3649,7 @@ function keepFocus(id, fn){
 const TR_RULES = [
 "Du bist ein erfahrener Oberarzt für Radiologie in Österreich und trainierst mich (Assistenzarzt in Weiterbildung) bei meinen Befunden aller Modalitäten. Antworte auf Deutsch, ohne Einleitung, ohne Schlusssatz, ohne Rückfragen.",
 "",
-"Unten steht mein Originalbefund. Gib exakt diese acht Abschnitte aus, jeweils eingeleitet durch die Markerzeile allein in einer eigenen Zeile (@@WARNUNG, @@V1, @@V2, @@BL, @@BF, @@TIPPS, @@FEHLER, @@KARTE):",
+"Unten steht mein Originalbefund. Gib exakt diese neun Abschnitte aus, jeweils eingeleitet durch die Markerzeile allein in einer eigenen Zeile (@@WARNUNG, @@V1, @@V2, @@BL, @@BF, @@TIPPS, @@FEHLER, @@SCORE, @@KARTE):",
 "",
 "@@WARNUNG",
 "Nur bei groben inhaltlichen Fehlern, die medizinisch falsch oder gefährlich wären, wenn der Befund so hinausginge: Seitenverwechslungen; anatomische Verwechslungen und falsche Zuordnungen (z. B. Neuroforamenstenose im Segment LWK 4/5 mit Kompression der L1-Wurzel; falsche Etage, falsches Organ, Segment, Gefäß oder falscher Knochen); direkte Widersprüche (Befund vs. Beurteilung, widersprüchliche Größen derselben Läsion); klar unplausible Angaben (falsche Maßeinheit, unmögliche Lage); kritische Mehrdeutigkeiten mit therapeutischer Relevanz.",
@@ -3582,9 +3675,12 @@ const TR_RULES = [
 "@@FEHLER",
 "Nur ein JSON-Array (kein Markdown) der inhaltlich relevanten Korrekturen gegenüber meinem Original – aus Warnung, Version 1 und Version 2 –, höchstens 6, jeweils {\"k\":\"Kategorie\",\"t\":\"kurz: alt → neu bzw. was fehlte\"}. Kategorie genau eine aus: Seite, Anatomie, Widerspruch, Terminologie, Rechtschreibung, Formulierung, Fehlende Angabe, Klassifikation/Empfehlung, Beurteilung. Reine Kosmetik weglassen. Nichts zu korrigieren: [].",
 "",
+"@@SCORE",
+"Bewertung meines ORIGINALbefunds (nicht deiner Versionen) als ein JSON-Objekt (kein Markdown): {\"v\":Vollständigkeit,\"k\":Klarheit & Struktur,\"t\":Terminologie & Sprache,\"b\":Beurteilung,\"tipp\":\"wichtigster Hebel zur Verbesserung, 1 kurzer Satz\"} – jeweils ganze Zahl 1–10, streng und realistisch wie ein Oberarzt: 10 = druckreif, 8 = gut mit Kleinigkeiten, 6 = deutliche Mängel, ≤ 4 = grob fehlerhaft. Grobe Fehler aus der Warnung senken die betroffenen Werte deutlich. Enthält das Original keinen Beurteilungsteil und ist auch keiner nötig: \"b\":null.",
+"",
 "@@KARTE",
 "Eine Lernkarte nur, wenn der Fall wirklich lehrreich ist: eine relevante, nicht alltägliche Pathologie, eine leitlinien- oder klassifikationsrelevante Entscheidung, ein typischer gefährlicher Fallstrick oder eine seltenere Diagnose. KEINE Karte bei Normalbefund, Routine und häufigen Nebenbefunden (z. B. degenerative Veränderungen, einfache Zysten, Steatose, Divertikulose, Arteriosklerose) und wenn es zum Thema schon eine Lernkarte gibt (Liste unten). Im Zweifel keine Karte – dann genau: KEINE",
-"Sonst nur ein JSON-Objekt (kein Markdown) mit genau diesen Feldern: {\"titel\":\"kurzer Kartentitel (Diagnose/Thema)\",\"mod\":\"CT|MRT|RÖ|SONO|DL|INT\",\"thema\":\"Organ/Region\",\"fall\":\"1 kurzer Satz zum Fall (anonym)\",\"zeichen\":[\"Bildzeichen\"],\"dd\":[\"DD – Abgrenzung in 3–5 Wörtern\"],\"klass\":[\"Klassifikation/Grenzwert mit Jahr\"],\"fallstricke\":[\"Pitfall\"],\"befund\":\"1 Mustersatz für den Befund\",\"merke\":\"Merksatz\",\"fragen\":[{\"f\":\"Prüfungsfrage\",\"a\":\"knappe Antwort\"}]}",
+"Sonst nur ein JSON-Objekt (kein Markdown) mit genau diesen Feldern: {\"titel\":\"kurzer Kartentitel (Diagnose/Thema)\",\"en\":\"englischer Fachbegriff des Titels\",\"mod\":\"CT|MRT|RÖ|SONO|DL|INT\",\"thema\":\"Organ/Region\",\"fall\":\"1 kurzer Satz zum Fall (anonym)\",\"zeichen\":[\"Bildzeichen\"],\"dd\":[\"DD – Abgrenzung in 3–5 Wörtern\"],\"klass\":[\"Klassifikation/Grenzwert mit Jahr\"],\"fallstricke\":[\"Pitfall\"],\"befund\":\"1 Mustersatz für den Befund\",\"merke\":\"Merksatz\",\"fragen\":[{\"f\":\"Prüfungsfrage\",\"a\":\"knappe Antwort\"}]}",
 "Kurz und knapp: jede Liste höchstens 3 Punkte mit je höchstens 10 Wörtern (klass und fallstricke gern nur 1 Punkt oder leer), Merksatz höchstens 12 Wörter, Befund 1 Satz, 1–2 Prüfungsfragen. Nur gesicherte Fakten.",
 "",
 "Regeln für Version 1 und 2:",
@@ -3615,7 +3711,7 @@ const trSave = () => sess.set("tr", {input:S.tr.input, raw:S.tr.raw, tier:S.tr.t
 function trParse(raw){
   const out = {}; let cur = null;
   for (const line of String(raw || "").replace(/\r/g, "").split("\n")){
-    const m = line.match(/^\s*(?:#+\s*)?@@\s*(WARNUNG|V1|V2|BL|BF|TIPPS|FEHLER|KARTE)\b[^\n]*$/i);
+    const m = line.match(/^\s*(?:#+\s*)?@@\s*(WARNUNG|V1|V2|BL|BF|TIPPS|FEHLER|SCORE|KARTE)\b[^\n]*$/i);
     if (m){ cur = m[1].toUpperCase(); out[cur] = []; continue; }
     if (cur) out[cur].push(line);
   }
@@ -3652,10 +3748,11 @@ function trOutHtml(){
       const good = /keine groben fehler/i.test(p.WARNUNG) && !/(FEHLER|PRÜFEN)\s*:/.test(p.WARNUNG);
       h += `<div class="ocard ${good ? "good" : "warn"}"><div class="oh"><span class="ot">${good ? "✓ Warnung" : "⚠️ Warnung"}</span></div><div class="ob">${esc(p.WARNUNG.replace(/\*\*/g, ""))}</div></div>`;
     }
+    h += scoreCardHtml();
     if (p.V1 != null || p.V2 != null) h += `<div class="ogrid">${trCard(p, "V1", "Version 1 · minimale Korrektur", "var(--Sono)")}${trCard(p, "V2", "Version 2 · Oberarzt-Fassung", "var(--CT)")}</div>`;
     h += `<div class="ogrid">${trCard(p, "BL", "Beurteilung · Liste", "var(--Röntgen)")}${trCard(p, "BF", "Beurteilung · Fließtext", "var(--Röntgen)")}</div>`;
     const tips = trTips();
-    if (p.TIPPS != null) h += `<div class="ocard" style="--oc:var(--MRT)"><div class="oh"><span class="ot">💡 Lerntipps</span></div><div class="tips">${tips.map((x, i) => `<div class="tip"><span class="tn">${i + 1}</span><div>${x.title ? `<b class="tt">${mdInline(x.title)}</b>` : ""}<span>${mdInline(x.text)}</span></div><button class="add" data-trl="${i}" title="Im Lexikon vertiefen">📚</button></div>`).join("") || '<span class="note">…</span>'}</div></div>`;
+    if (p.TIPPS != null) h += `<div class="ocard" style="--oc:var(--MRT)"><div class="oh"><span class="ot">💡 Lerntipps</span></div><div class="tips">${tips.map((x, i) => `<div class="tip"><span class="tn">${i + 1}</span><div>${x.title ? `<b class="tt">${mdInline(x.title)}</b>` : ""}<span>${mdInline(x.text)}</span></div><span class="tipb"><button class="add" data-trl="${i}" title="Im Lexikon vertiefen">📚</button>${rpLink(x.title || x.text.slice(0, 60), "🔗", "add")}</span></div>`).join("") || '<span class="note">…</span>'}</div></div>`;
   }
   h += learnChip();
   if (t.trunc) h += `<div class="note">Die Antwort wurde abgeschnitten – sehr lange Befunde besser in Teilen prüfen.</div>`;
@@ -3877,7 +3974,7 @@ function mdHtml(src){
 function lxChatHtml(){
   let h = "";
   if (!S.lx.turns.length) h += `<div class="note lxintro">Frag nach einem Befund, Messwert oder einer Klassifikation – z. B. „Leberläsion 12 mm, arteriell hyper, Washout“ oder „Normwerte Hypophyse“. Mit „erklär's mir“ gibt es die Lern-Version mit Merkhilfen und Prüfungsfragen.</div>`;
-  h += S.lx.turns.map(t => t.role === "user" ? `<div class="msg u">${esc(t.content)}</div>` : `<div class="msg a md">${mdHtml(t.content)}</div>`).join("");
+  h += S.lx.turns.map((t, i) => t.role === "user" ? `<div class="msg u">${esc(t.content)}</div>` : `<div class="msg a md">${mdHtml(t.content)}${lxFootHtml(t, i)}</div>`).join("");
   const last = S.lx.turns[S.lx.turns.length - 1];
   if (S.lx.busy && (!last || last.role === "user")) h += `<div class="msg a"><div class="status"><span class="spin"></span>schlägt nach …</div></div>`;
   if (S.lx.err) h += `<div class="errbox">${esc(S.lx.err)}</div>`;
@@ -4031,7 +4128,7 @@ function dbq(key, fn){
   SY.chain[key] = next; return next;
 }
 S.favTs = store.get("favTs", 0);
-const prefsObj = () => ({favs:[...S.favs], favTs:S.favTs, favOrd:!!S.favOrd, recent:S.recent.slice(0, 12), use:S.use});
+const prefsObj = () => ({favs:[...S.favs], favTs:S.favTs, favOrd:!!S.favOrd, recent:S.recent.slice(0, 12), use:S.use, iuse:S.iuse || {}});
 let prefsT = null, prefsBusy = 0;
 function prefsFlush(){
   clearTimeout(prefsT); prefsT = null;
@@ -4044,7 +4141,7 @@ function prefsPush(){ if (!SY.on) return; clearTimeout(prefsT); prefsT = setTime
 store.set = (k, v) => {
   _storeSet(k, v);
   if (k === "favs"){ S.favTs = Date.now(); _storeSet("favTs", S.favTs); }
-  if (k === "favs" || k === "recent" || k === "use") prefsPush();
+  if (k === "favs" || k === "recent" || k === "use" || k === "iuse") prefsPush();
 };
 window.addEventListener("pagehide", () => { if (prefsT) prefsFlush(); });
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && prefsT) prefsFlush(); });
@@ -4060,6 +4157,7 @@ function applyPrefs(d){
   }
   if (Array.isArray(d.recent) && !push) S.recent = d.recent.slice(0, 12);
   if (d.use && typeof d.use === "object"){ const u = Object.assign({}, S.use); for (const [k, n] of Object.entries(d.use)) u[k] = Math.max(u[k] || 0, +n || 0); S.use = u; }
+  if (d.iuse && typeof d.iuse === "object"){ const u = Object.assign({}, S.iuse || {}); for (const [k, n] of Object.entries(d.iuse)) u[k] = Math.max(u[k] || 0, +n || 0); S.iuse = u; _storeSet("iuse", u); }
   if (push) prefsPush();
   if (JSON.stringify(prefsObj()) === before) return;
   _storeSet("favs", [...S.favs]); _storeSet("favTs", S.favTs); _storeSet("favOrd", !!S.favOrd); _storeSet("recent", S.recent); _storeSet("use", S.use);
@@ -4133,7 +4231,7 @@ const findCard = titel => { const n = normT(titel); return n ? [...S.cards.value
 function cardTitlesHint(){ const t = [...S.cards.values()].sort((a, b) => (b.ts || 0) - (a.ts || 0)).slice(0, 80).map(c => c.titel); return t.length ? "\n\nSchon vorhandene Lernkarten (dazu keine neue Karte): " + t.join("; ") : ""; }
 function cardAdd(k){
   const c = {id:"c" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), ts:Date.now(), src:"trainer",
-    titel:String(k.titel).slice(0, 140), mod:String(k.mod || "").toUpperCase().slice(0, 8), thema:String(k.thema || "").slice(0, 90), fall:String(k.fall || "").slice(0, 500),
+    titel:String(k.titel).slice(0, 140), en:String(k.en || "").slice(0, 120), mod:String(k.mod || "").toUpperCase().slice(0, 8), thema:String(k.thema || "").slice(0, 90), fall:String(k.fall || "").slice(0, 500),
     zeichen:cardArr(k.zeichen), dd:cardArr(k.dd), klass:cardArr(k.klass), fallstricke:cardArr(k.fallstricke),
     befund:String(k.befund || "").slice(0, 800), merke:String(k.merke || "").slice(0, 300),
     fragen:(Array.isArray(k.fragen) ? k.fragen : []).filter(x => x && x.f).slice(0, 2).map(x => ({f:String(x.f), a:String(x.a || "")})),
@@ -4184,7 +4282,7 @@ function learnChip(){
   if (c === "none") return `<div class="lchip dim">🎴 Routinefall – keine Lernkarte.${S.ai ? ' <button class="add" id="tr-card">Trotzdem Karte erstellen</button>' : ""}</div>`;
   return "";
 }
-const CARD_FIELDS = '{"titel":"kurzer Kartentitel (Diagnose/Thema)","mod":"CT|MRT|RÖ|SONO|DL|INT","thema":"Organ/Region","fall":"1 kurzer Satz zum Fall (anonym)","zeichen":["Bildzeichen"],"dd":["DD – Abgrenzung in 3–5 Wörtern"],"klass":["Klassifikation/Grenzwert mit Jahr"],"fallstricke":["Pitfall"],"befund":"1 Mustersatz für den Befund","merke":"Merksatz","fragen":[{"f":"Prüfungsfrage","a":"knappe Antwort"}]}';
+const CARD_FIELDS = '{"titel":"kurzer Kartentitel (Diagnose/Thema)","en":"englischer Fachbegriff des Titels","mod":"CT|MRT|RÖ|SONO|DL|INT","thema":"Organ/Region","fall":"1 kurzer Satz zum Fall (anonym)","zeichen":["Bildzeichen"],"dd":["DD – Abgrenzung in 3–5 Wörtern"],"klass":["Klassifikation/Grenzwert mit Jahr"],"fallstricke":["Pitfall"],"befund":"1 Mustersatz für den Befund","merke":"Merksatz","fragen":[{"f":"Prüfungsfrage","a":"knappe Antwort"}]}';
 async function trForceCard(){
   if (!S.ai) return;
   const p = trParse(S.tr.raw), b = $("#tr-card");
@@ -4227,7 +4325,7 @@ function lnDueHtml(due){
   if (c.fall) h += `<div class="lc-fall">${mdInline(c.fall)}</div>`;
   h += `<div class="lc-ask">${q ? mdInline(q.f) : "Diagnose, typische Bildzeichen, DD und Klassifikation?"}</div>`;
   if (!S.ln.show) h += `<div class="acts"><button class="copy" id="ln-show">Antwort zeigen <span class="kh2">Leertaste</span></button></div>`;
-  else h += (q ? `<div class="lc-ans">${mdInline(q.a)}</div>` : "") + `<div class="lc-tt">${esc(c.titel)}</div>` + cardBody(c, true) +
+  else h += (q ? `<div class="lc-ans">${mdInline(q.a)}</div>` : "") + `<div class="lc-tt">${esc(c.titel)} ${rpLink(c.titel, "🔗 Radiopaedia", "mini", c.en)}</div>` + cardBody(c, true) +
     `<div class="grade"><button data-g="0" class="g0">😕 Nochmal<span class="kh2">1 · 10 Min.</span></button><button data-g="1" class="g1">🙂 Gewusst<span class="kh2">2 · ${LBOX[Math.min(LBOX.length - 1, (c.box || 0) + 1)]} T.</span></button><button data-g="2" class="g2">😎 Leicht<span class="kh2">3 · ${LBOX[Math.min(LBOX.length - 1, (c.box || 0) + 2)]} T.</span></button></div>`;
   return h + `</div>`;
 }
@@ -4237,7 +4335,7 @@ function lnAllHtml(all){
   let h = `<label class="lsearch"><span aria-hidden="true">🔎</span><input id="ln-q" type="search" placeholder="Karten durchsuchen …" value="${esc(S.ln.q)}" autocomplete="off"></label>`;
   if (!list.length) h += `<div class="note">${all.length ? "Keine Treffer." : "Noch keine Karten – sie entstehen automatisch im ✍️ Trainer."}</div>`;
   h += `<div class="lclist">` + list.map(c => `<div class="lcard${S.ln.open === c.id ? " open" : ""}"><button class="lc-row" data-lo="${esc(c.id)}"><span class="lc-mod" style="--mc:${modCol(c.mod)}">${esc(c.mod || "–")}</span><b class="lc-t">${esc(c.titel)}</b><span class="note">${esc(c.thema || "")}</span><span class="lc-meta">${dueLabel(c)}</span></button>` +
-    (S.ln.open === c.id ? `<div class="lc-body">${c.fall ? `<div class="lc-fall">${mdInline(c.fall)}</div>` : ""}${cardBody(c)}<div class="acts"><button class="add" data-lnow="${esc(c.id)}">🔁 Jetzt wiederholen</button><span class="note">Stufe ${c.box || 0} · ${c.reviews || 0}× wiederholt · erstellt ${esc(new Date(c.ts || 0).toLocaleDateString("de-AT"))}</span><button class="mini danger" data-ldel="${esc(c.id)}" style="margin-left:auto">Löschen</button></div></div>` : "") + `</div>`).join("") + `</div>`;
+    (S.ln.open === c.id ? `<div class="lc-body">${c.fall ? `<div class="lc-fall">${mdInline(c.fall)}</div>` : ""}${cardBody(c)}<div class="acts"><button class="add" data-lnow="${esc(c.id)}">🔁 Jetzt wiederholen</button>${rpLink(c.titel, "🔗 Radiopaedia", "add", c.en)}<span class="note">Stufe ${c.box || 0} · ${c.reviews || 0}× wiederholt · erstellt ${esc(new Date(c.ts || 0).toLocaleDateString("de-AT"))}</span><button class="mini danger" data-ldel="${esc(c.id)}" style="margin-left:auto">Löschen</button></div></div>` : "") + `</div>`).join("") + `</div>`;
   return h;
 }
 function errStats(days){
@@ -4273,10 +4371,10 @@ async function lnAnalyse(){
 function renderLearn(){
   const w = $("#lnw"); if (!w) return;
   const due = dueCards(), all = [...S.cards.values()];
-  const tabs = [["due", "🔁 Wiederholen" + (due.length ? " · " + due.length : "")], ["all", "🎴 Alle Karten · " + all.length], ["err", "📈 Meine Fehler"], ["log", "📒 Logbuch"]];
+  const tabs = [["due", "🔁 Wiederholen" + (due.length ? " · " + due.length : "")], ["all", "🎴 Alle Karten · " + all.length], ["err", "📈 Meine Fehler"], ["log", "📒 Logbuch"], ["prog", "🏅 Fortschritt"]];
   let h = `<div class="phead"><h1>🎓 Lernen</h1><span class="ps">Lernkarten aus deinen Trainer-Fällen · Fehler-Statistik</span><span class="sync" title="${SY.on ? "Über deinen Claude-Account auf allen Geräten gleich" : "Nur in diesem Browser gespeichert"}">${SY.on ? "☁️ synchronisiert" : "💾 nur dieses Gerät"}</span></div>`;
   h += `<div class="ltabs">${tabs.map(([k, l]) => `<button data-lt="${k}" class="${S.ln.tab === k ? "on" : ""}">${l}</button>`).join("")}</div>`;
-  h += S.ln.tab === "all" ? lnAllHtml(all) : S.ln.tab === "err" ? lnErrHtml() : S.ln.tab === "log" ? lnLogHtml() : lnDueHtml(due);
+  h += S.ln.tab === "all" ? lnAllHtml(all) : S.ln.tab === "err" ? lnErrHtml() : S.ln.tab === "log" ? lnLogHtml() : S.ln.tab === "prog" ? lnProgHtml() : lnDueHtml(due);
   keepFocus("ln-q", () => { w.innerHTML = h; });
   learnBadge();
 }
@@ -4536,6 +4634,9 @@ function palIndex(){
   act("📝 Nur Beurteilung", "aus dem Befund im Trainer", () => { setMode("tr"); if (String(S.tr.input || "").trim()) trRun(false, "beu"); else { toast("Befund einfügen, dann „📝 Nur Beurteilung“"); const f = $("#tr-in"); if (f) f.focus(); } }, "beurteilung zusammenfassung impression");
   if (S.canEdit) act("🧹 Aufräumen", "doppelte & ungenutzte Bausteine/Vorlagen", () => openClean(), "aufräumen doppelt duplikate löschen papierkorb");
   if (S.canEdit && DATA[S.sel] && S.vh.some(v => v.k === tkey(DATA[S.sel]))) act("🕘 Verlauf", DATA[S.sel].title, () => { setMode("tpl"); openVh(tkey(DATA[S.sel])); }, "versionen wiederherstellen rückgängig");
+  act("🏅 Fortschritt", "Score, Lern-Streak & Abzeichen", () => { S.ln.tab = "prog"; lnSave(); setMode("learn"); }, "score streak abzeichen badges qualität");
+  act("💉 KM-Helfer", "eGFR, Metformin, Allergie (ESUR)", () => { const t = DATA.find(x => x.sections.some(s => s.calc === "kmgfr")); if (t) palOpenTpl(t.id); else toast("KM-Helfer nicht gefunden"); }, "kontrastmittel km egfr kreatinin metformin niere allergie");
+  act("📏 Normwert-Hinweise " + (S.nwOn ? "aus" : "an"), "Normwerte beim Drüberfahren", () => nwToggle(), "normwerte tooltip hinweise");
   act("📦 Sicherung herunterladen", "Backup", () => downloadBackup(), "backup export");
   if (S.canEdit) act("＋ Neue Vorlage", "anlegen", () => { setMode("tpl"); startEdit(null); }, "neu");
   act("❓ Hilfe & Tastenkürzel", "", () => $("#helpbtn").click(), "hilfe");
@@ -4642,7 +4743,7 @@ function renderHome(){
   h += `<button class="hsearch" id="h-pal"><span aria-hidden="true">🔎</span><span class="hs-t">Vorlage, Baustein oder Aktion suchen …</span><kbd>Strg K</kbd></button>`;
   h += `<div class="hgrid">`;
   h += `<section class="hcard"><div class="hct">Zuletzt verwendet</div>${recent.length ? `<div class="hrec">${recent.map(t => `<button data-hopen="${t.id}" style="--mc:${col(t.mod)}">${regIcon(t.region)}<span class="hrt">${esc(t.title)}</span><span class="hrm">${esc(SHORT[t.mod])}</span></button>`).join("")}</div>` : `<div class="hempty">Noch nichts geöffnet.</div>`}</section>`;
-  h += `<section class="hcard hlearn"><div class="hct">Lernen</div><div class="hbig"><b>${due}</b><span>${due === 1 ? "Karte fällig" : "Karten fällig"}</span></div><div class="hsub">${total} Lernkarten insgesamt</div><button class="${due ? "copy" : "add"}" data-hgo="due">${due ? "🔁 Jetzt wiederholen" : "Karten ansehen"}</button></section>`;
+  h += `<section class="hcard hlearn"><div class="hct">Lernen</div><div class="hbig"><b>${due}</b><span>${due === 1 ? "Karte fällig" : "Karten fällig"}</span></div><div class="hsub">${total} Lernkarten insgesamt${(k => k.cur ? ` · <span class="hstreak" title="Lerntage in Folge">🔥 ${k.cur} ${k.cur === 1 ? "Tag" : "Tage"}</span>` : "")(streakInfo())}</div><button class="${due ? "copy" : "add"}" data-hgo="due">${due ? "🔁 Jetzt wiederholen" : "Karten ansehen"}</button></section>`;
   h += `<section class="hcard"><div class="hct">Diese Woche</div><div class="hbig"><b>${st.total}</b><span>${st.total === 1 ? "Befund" : "Befunde"}</span></div>${mods.length ? `<div class="hbars">${mods.map(m => `<div class="hbar" style="--mc:${col(m)}"><span>${esc(SHORT[m])}</span><i><u style="width:${Math.max(6, Math.round(st.byMod[m].n / max * 100))}%"></u></i><em>${st.byMod[m].n}</em></div>`).join("")}</div>` : `<div class="hsub">Kopierte Befunde werden hier gezählt.</div>`}${topErr ? `<div class="hsub">Häufigster Fehler: <b>${esc(topErr[0])}</b></div>` : ""}<button class="add" data-hgo="log">📒 Logbuch</button></section>`;
   h += `</div>`;
   h += `<div class="hquick"><button data-hq="tr">✍️ Befund prüfen</button><button data-hq="lex">📚 Nachschlagen</button><button data-hq="fav">⭐ Favoriten</button><button data-hq="calc">🧮 Rechner</button>${S.canEdit ? '<button data-hq="clean">🧹 Aufräumen</button>' : ""}</div>`;
@@ -4978,6 +5079,384 @@ $("#detail").addEventListener("change", e => {
   if (b){ b.disabled = !n; b.textContent = `✓ ${n} Änderung${n === 1 ? "" : "en"} speichern`; }
 });
 
+/* ---------- v17: 🏅 befundqualitäts-score ---------- */
+S.logMine.sc = Array.isArray(S.logMine.sc) ? S.logMine.sc : [];
+S.logMine.rev = S.logMine.rev && typeof S.logMine.rev === "object" ? S.logMine.rev : {};
+const SC_DIM = [["v", "Vollständigkeit"], ["k", "Klarheit & Struktur"], ["t", "Terminologie"], ["b", "Beurteilung"]];
+function scoreParse(raw){
+  const o = parseJSONish(trParse(raw).SCORE);
+  if (!o || typeof o !== "object" || Array.isArray(o)) return null;
+  const d = {}; let sum = 0, n = 0;
+  for (const [k] of SC_DIM){ const x = o[k] == null ? null : Math.max(1, Math.min(10, Math.round(+o[k]))); d[k] = isFinite(x) ? x : null; if (d[k] != null){ sum += d[k]; n++; } }
+  if (!n) return null;
+  d.g = Math.round(sum / n * 10); d.tipp = String(o.tipp || "").slice(0, 220);
+  return d;
+}
+const scoreAll = () => Object.values(S.logAll).flatMap(dev => (dev && Array.isArray(dev.sc)) ? dev.sc : []).filter(x => x && x.ts && isFinite(x.g)).sort((a, b) => a.ts - b.ts);
+function scoreAdd(raw, ts){
+  const d = scoreParse(raw); if (!d) return;
+  if (S.logMine.sc.some(x => x.ts === ts)) return;
+  S.logMine.sc = S.logMine.sc.concat([{ts, g:d.g, v:d.v, k:d.k, t:d.t, b:d.b}]).slice(-300);
+  S.logAll[DEV] = S.logMine; logSave(); badgeCheck();
+}
+const _lfc0 = learnFromCheck;
+learnFromCheck = function(raw){ _lfc0(raw); try { scoreAdd(raw, S.tr.ts || Date.now()); } catch(e){} };
+const scGrade = g => g >= 90 ? ["Druckreif", "ok"] : g >= 80 ? ["Sehr gut", "ok"] : g >= 70 ? ["Solide", "mid"] : g >= 55 ? ["Ausbaufähig", "warn"] : ["Überarbeiten", "bad"];
+function scRing(g, size, cls){
+  const r = 42, c = 2 * Math.PI * r, off = c * (1 - Math.max(0, Math.min(100, g)) / 100);
+  return `<svg class="sring ${cls || ""}" viewBox="0 0 100 100" width="${size}" height="${size}" aria-hidden="true"><defs><linearGradient id="scg${size}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--p-top)"/><stop offset=".5" stop-color="var(--MRT)"/><stop offset="1" stop-color="var(--CT)"/></linearGradient></defs><circle cx="50" cy="50" r="${r}" class="sr-track"/><circle cx="50" cy="50" r="${r}" class="sr-val" stroke="url(#scg${size})" style="--c:${c.toFixed(1)};--off:${off.toFixed(1)}" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}" transform="rotate(-90 50 50)"/><text x="50" y="49" class="sr-num">${g}</text><text x="50" y="66" class="sr-sub">/ 100</text></svg>`;
+}
+function scoreCardHtml(){
+  const t = S.tr; if (!t.raw || t.kind === "beu") return "";
+  const d = scoreParse(t.raw);
+  if (!d) return t.busy ? "" : "";
+  const prev = scoreAll().filter(x => x.ts !== t.ts).slice(-10), avg = prev.length ? Math.round(prev.reduce((a, x) => a + x.g, 0) / prev.length) : null;
+  const [lab, tone] = scGrade(d.g), delta = avg == null ? null : d.g - avg;
+  return `<div class="scard tone-${tone}"><div class="sc-ring">${scRing(d.g, 104, "anim")}</div><div class="sc-body">
+    <div class="sc-top"><span class="sc-lab">Befundqualität</span><b class="sc-grade">${lab}</b>${delta == null ? '<span class="sc-delta">erster Wert</span>' : `<span class="sc-delta ${delta > 0 ? "up" : delta < 0 ? "down" : ""}">${delta > 0 ? "▲ +" + delta : delta < 0 ? "▼ " + delta : "＝"} vs. Ø ${avg}</span>`}</div>
+    <div class="sc-bars">${SC_DIM.map(([k, l], i) => d[k] == null ? "" : `<div class="sc-bar"><span>${l}</span><i><u style="--w:${d[k] * 10}%;--d:${i * 80}ms"></u></i><em>${d[k]}</em></div>`).join("")}</div>
+    ${d.tipp ? `<div class="sc-tip">💡 ${mdInline(d.tipp)}</div>` : ""}</div></div>`;
+}
+
+/* ---------- v17: 🔥 lern-streak & 🏅 abzeichen ---------- */
+function logRev(){ const d = dayKey(); S.logMine.rev[d] = (S.logMine.rev[d] || 0) + 1; S.logAll[DEV] = S.logMine; logSave(); badgeCheck(); }
+const _grade0 = grade;
+grade = function(c, g){ _grade0(c, g); try { logRev(); } catch(e){} };
+const _logCheck0 = logCheck;
+logCheck = function(){ _logCheck0(); try { badgeCheck(); } catch(e){} };
+function activeDays(){
+  const s = new Set();
+  for (const dev of Object.values(S.logAll)){ if (!dev) continue; for (const [d, n] of Object.entries(dev.rev || {})) if (n) s.add(d); for (const [d, n] of Object.entries(dev.checks || {})) if (n) s.add(d); }
+  return s;
+}
+const dayShift = (k, n) => { const [y, m, d] = k.split("-").map(Number); return dayKey(new Date(y, m - 1, d + n, 12).getTime()); };
+function streakInfo(){
+  const days = activeDays(), today = dayKey();
+  let cur = 0, k = days.has(today) ? today : dayShift(today, -1);
+  while (days.has(k)){ cur++; k = dayShift(k, -1); }
+  let best = 0, run = 0, last = null;
+  for (const d of [...days].sort()){ run = last && dayShift(last, 1) === d ? run + 1 : 1; best = Math.max(best, run); last = d; }
+  return {cur, best:Math.max(best, cur), today:days.has(today), days};
+}
+function badgeDefs(){
+  const st = logStats("all"), sc = scoreAll(), sk = streakInfo(), cards = [...S.cards.values()];
+  const m = k => (st.byMod[k] || {n:0}).n, last10 = sc.slice(-10), avg10 = last10.length === 10 ? last10.reduce((a, x) => a + x.g, 0) / 10 : 0;
+  return [
+    ["chk1", "🩺", "Erste Prüfung", "Einen Befund im Trainer geprüft", st.checks, 1],
+    ["chk25", "🧪", "Fleißig geprüft", "25 Befunde im Trainer", st.checks, 25],
+    ["chk100", "🔬", "Trainer-Profi", "100 Befunde im Trainer", st.checks, 100],
+    ["r100", "📋", "100 Befunde", "kopiert & gezählt im Logbuch", st.total, 100],
+    ["r500", "📚", "500 Befunde", "Routine wird Erfahrung", st.total, 500],
+    ["r1000", "🏛", "1000 Befunde", "Das Tausend ist voll", st.total, 1000],
+    ["ct100", "🌀", "CT-Hundert", "100 CT-Befunde", m("CT"), 100],
+    ["mr50", "🧲", "MRT-Fünfzig", "50 MRT-Befunde", m("MRT"), 50],
+    ["rx100", "☢️", "Röntgen-Hundert", "100 Röntgen-Befunde", m("Röntgen"), 100],
+    ["us50", "🔊", "Sono-Fünfzig", "50 Sono-Befunde", m("Sono"), 50],
+    ["s3", "🔥", "Drei am Stück", "3 Lerntage in Folge", sk.best, 3],
+    ["s7", "🔥", "Eine Woche", "7 Lerntage in Folge", sk.best, 7],
+    ["s30", "🏆", "Ein Monat", "30 Lerntage in Folge", sk.best, 30],
+    ["c10", "🎴", "Kartensammler", "10 Lernkarten", cards.length, 10],
+    ["k10", "🧠", "Sitzt", "10 Karten auf Stufe ≥ 3", cards.filter(c => (c.box || 0) >= 3).length, 10],
+    ["q90", "⭐", "Druckreif", "Ein Befund mit Score ≥ 90", sc.length ? Math.max(...sc.map(x => x.g)) : 0, 90],
+    ["a80", "💎", "Konstant gut", "Ø ≥ 80 über die letzten 10 Prüfungen", Math.round(avg10), 80]
+  ].map(([id, ic, name, desc, cur, goal]) => ({id, ic, name, desc, cur:Math.min(cur || 0, goal), goal, ok:(cur || 0) >= goal}));
+}
+let badgeT = null;
+function badgeCheck(){
+  clearTimeout(badgeT);
+  badgeT = setTimeout(() => {
+    const got = badgeDefs().filter(b => b.ok), seen = store.get("badges", null);
+    if (seen == null){ _storeSet("badges", got.map(b => b.id)); return; }
+    const neu = got.filter(b => !seen.includes(b.id));
+    if (neu.length){ _storeSet("badges", seen.concat(neu.map(b => b.id))); toast(`🏅 Neues Abzeichen: ${neu[0].ic} ${neu[0].name}${neu.length > 1 ? " (+" + (neu.length - 1) + ")" : ""}`); }
+  }, 600);
+}
+setTimeout(badgeCheck, 8000);
+function trendSvg(sc){
+  const L = sc.slice(-40); if (L.length < 2) return "";
+  const W = 640, H = 190, pl = 30, pr = 10, pt = 12, pb = 22, lo = 30;
+  const x = i => pl + (W - pl - pr) * (L.length === 1 ? .5 : i / (L.length - 1)), y = g => pt + (H - pt - pb) * (1 - (Math.max(lo, g) - lo) / (100 - lo));
+  const pts = L.map((s, i) => [x(i), y(s.g)]), line = pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" ");
+  const area = line + ` L${pts[pts.length - 1][0].toFixed(1)} ${H - pb} L${pts[0][0].toFixed(1)} ${H - pb} Z`;
+  const ma = L.map((s, i) => { const w = L.slice(Math.max(0, i - 4), i + 1); return [x(i), y(w.reduce((a, b) => a + b.g, 0) / w.length)]; }).map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" ");
+  const grid = [50, 70, 90].map(g => `<line x1="${pl}" x2="${W - pr}" y1="${y(g)}" y2="${y(g)}" class="tg"/><text x="${pl - 6}" y="${y(g) + 4}" class="tl">${g}</text>`).join("");
+  const dots = L.map((s, i) => `<circle cx="${pts[i][0].toFixed(1)}" cy="${pts[i][1].toFixed(1)}" r="${i === L.length - 1 ? 4.5 : 3}" class="td${i === L.length - 1 ? " last" : ""}"><title>${new Date(s.ts).toLocaleDateString("de-AT")}: ${s.g}</title></circle>`).join("");
+  return `<svg class="trend" viewBox="0 0 ${W} ${H}" role="img" aria-label="Score-Verlauf"><defs><linearGradient id="tga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--MRT)" stop-opacity=".35"/><stop offset="1" stop-color="var(--MRT)" stop-opacity="0"/></linearGradient><linearGradient id="tgl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--p-top)"/><stop offset="1" stop-color="var(--CT)"/></linearGradient></defs>${grid}<path d="${area}" fill="url(#tga)"/><path d="${ma}" class="tma"/><path d="${line}" class="tln" stroke="url(#tgl)"/>${dots}</svg>`;
+}
+function lnProgHtml(){
+  const sc = scoreAll(), sk = streakInfo(), last10 = sc.slice(-10), avg = last10.length ? Math.round(last10.reduce((a, x) => a + x.g, 0) / last10.length) : null;
+  let h = `<div class="pgrid">`;
+  h += `<div class="ptile pstreak${sk.cur ? " on" : ""}"><div class="pt-ic">🔥</div><div><b>${sk.cur}</b><span>${sk.cur === 1 ? "Tag" : "Tage"} in Folge${!sk.today && sk.cur ? " · heute noch offen" : ""}</span><em>Rekord: ${sk.best}</em></div></div>`;
+  h += `<div class="ptile">${avg == null ? '<div class="pt-ic">🏅</div>' : scRing(avg, 64)}<div><b>${avg == null ? "–" : avg}</b><span>Ø Score (letzte ${last10.length || 10})</span><em>${sc.length} bewertete Prüfungen</em></div></div>`;
+  h += `</div>`;
+  const today = dayKey(), strip = []; for (let i = 20; i >= 0; i--){ const d = dayShift(today, -i); strip.push(`<i class="${sk.days.has(d) ? "on" : ""}${i === 0 ? " today" : ""}" title="${esc(new Date(d + "T12:00").toLocaleDateString("de-AT", {weekday:"short", day:"2-digit", month:"2-digit"}))}"></i>`); }
+  h += `<div class="pstrip"><span class="note">Letzte 3 Wochen</span><div>${strip.join("")}</div><span class="note">Ein Lerntag = mind. 1 Karte wiederholt oder 1 Befund geprüft</span></div>`;
+  if (sc.length >= 2){
+    const dims = SC_DIM.map(([k, l]) => { const v = sc.slice(-20).map(x => x[k]).filter(x => x != null); return [k, l, v.length ? v.reduce((a, b) => a + b, 0) / v.length : null]; }).filter(x => x[2] != null);
+    const weak = dims.slice().sort((a, b) => a[2] - b[2])[0];
+    h += `<div class="ocard" style="--oc:var(--MRT)"><div class="oh"><span class="ot">📈 Score-Verlauf</span><span class="note">Punkte = einzelne Prüfungen · gestrichelt = gleitender Ø</span></div><div class="ptrend">${trendSvg(sc)}</div></div>`;
+    h += `<div class="ocard" style="--oc:var(--p-top)"><div class="oh"><span class="ot">🎯 Stärken & Hebel</span><span class="note">Ø der letzten ${Math.min(20, sc.length)}</span></div><div class="sc-bars pdims">${dims.map(([k, l, v], i) => `<div class="sc-bar${weak && weak[0] === k ? " weak" : ""}"><span>${l}${weak && weak[0] === k ? " · dein Hebel" : ""}</span><i><u style="--w:${(v * 10).toFixed(0)}%;--d:${i * 80}ms"></u></i><em>${String(Math.round(v * 10) / 10).replace(".", ",")}</em></div>`).join("")}</div></div>`;
+  } else h += `<div class="offline"><b>Noch kein Verlauf</b><span>Jede Prüfung im ✍️ Trainer bekommt jetzt einen Befundqualitäts-Score (Vollständigkeit, Klarheit, Terminologie, Beurteilung). Ab zwei Prüfungen siehst du hier deine Kurve.</span></div>`;
+  const B = badgeDefs(), nOk = B.filter(b => b.ok).length;
+  h += `<div class="sech hsec">Abzeichen <span class="cln">${nOk} / ${B.length}</span></div><div class="bgrid">${B.map(b => `<div class="badge2${b.ok ? " ok" : ""}" title="${esc(b.desc)}"><span class="bic">${b.ic}</span><b>${esc(b.name)}</b><span class="bd">${esc(b.desc)}</span>${b.ok ? "" : `<span class="bp"><i style="width:${Math.round(b.cur / b.goal * 100)}%"></i></span><span class="bn">${b.cur} / ${b.goal}</span>`}</div>`).join("")}</div>`;
+  return h;
+}
+
+/* ---------- v17: ⭐ bausteine nach häufigkeit ---------- */
+S.iuse = store.get("iuse", {}) || {};
+const ikey = (tid, text) => { const t = DATA[tid]; return t ? tkey(t) + "::" + one(text).toLowerCase().slice(0, 140) : null; };
+function iuseBump(tid, text){
+  const k = ikey(tid, text); if (!k) return;
+  S.iuse[k] = (S.iuse[k] || 0) + 1;
+  const ks = Object.keys(S.iuse); if (ks.length > 600){ ks.sort((a, b) => S.iuse[a] - S.iuse[b]).slice(0, ks.length - 500).forEach(x => delete S.iuse[x]); }
+  store.set("iuse", S.iuse);
+}
+const _copyUnit0 = copyUnit;
+copyUnit = function(i, el){ const u = S.units[i]; if (u && u.item) iuseBump(u.tpl, u.text); _copyUnit0(i, el); };
+const _kitAdd0 = kitAdd;
+kitAdd = function(i){ const u = S.units[i]; if (u && u.item) iuseBump(u.tpl, u.text); _kitAdd0(i); };
+function topItemsHtml(t, si){
+  const all = [];
+  t.sections.forEach(s => { if (s.type === "items") s.groups.forEach(g => g.items.forEach(it => all.push(it))); });
+  if (all.length < 4) return "";
+  const top = all.map(it => [it, S.iuse[ikey(t.id, it.text)] || 0]).filter(x => x[1] >= 2).sort((a, b) => b[1] - a[1]).slice(0, 4);
+  if (!top.length) return "";
+  let h = `<div class="ilab itop">⭐ Meistgenutzt</div>`;
+  top.forEach(([it, n], k) => {
+    const u = S.units.push({text:it.text, label:it.text, item:true, tpl:t.id, to:it.to, key:t.id + ":top:" + k});
+    h += `<div class="item itopi" data-cu="${u - 1}"><span class="it">${unitHtml(u - 1)}</span><span class="icnt" title="So oft kopiert">${n}×</span><button class="add" data-addu="${u - 1}" title="In den Befund-Baukasten: ersetzt die passende Normalzeile">＋</button></div>`;
+  });
+  return h;
+}
+
+/* ---------- v17: 📏 normwerte beim drüberfahren ---------- */
+const NW = [
+  ["Aorta(?: (?:abdominalis|ascendens|descendens|thoracica))?|Bauchaorta", "Aorta", ["Ascendens ≤ 4 cm · 4–4,4 cm ektatisch · ≥ 4,5 cm Aneurysma", "Descendens < 3 cm", "Abdominalis < 3 cm · ≥ 3 cm = Aneurysma (AAA)"]],
+  ["Truncus pulmonalis|Pulmonalishauptstamm|Pulmonalarterienhauptstamm", "Truncus pulmonalis", ["≤ 29 mm", "≥ 29 mm oder breiter als die Aorta ascendens → V.a. pulmonale Hypertonie"]],
+  ["DHC|Ductus hepatocholedochus|Ductus choledochus|Choledochus|Gallenwege|Gallengang|Gallengänge", "Gallenwege", ["DHC ≤ 6 mm (ab 60 J. ca. +1 mm pro Dekade)", "nach Cholezystektomie bis ca. 10 mm", "intrahepatisch ≤ 2 mm bzw. ≤ 40 % der Begleitvene"]],
+  ["Ductus pancreaticus|Pankreasgang|Ductus Wirsungianus", "Ductus pancreaticus", ["≤ 3 mm (Kopf), zum Schwanz hin schmaler"]],
+  ["Pankreas", "Pankreas", ["Kopf ≤ 3 cm · Korpus/Schwanz ≤ 2,5 cm (altersabhängige Atrophie)", "Gang ≤ 3 mm"]],
+  ["Milz", "Milz", ["Länge ≤ 12 cm (Sono bis ca. 13 cm)", "Splenomegalie > 13 cm · Milzindex (L x B x T) > 480 cm³"]],
+  ["Leber", "Leber", ["Kraniokaudal in der MCL ≤ 15–16 cm", "Pfortader ≤ 13 mm"]],
+  ["Pfortader|V\\. portae|Vena portae", "Pfortader", ["≤ 13 mm · > 13 mm V.a. portale Hypertension"]],
+  ["Nebennieren?", "Nebenniere", ["Schenkeldicke ≤ 5–6 mm", "Knoten nativ ≤ 10 HU → lipidreiches Adenom"]],
+  ["Nieren?", "Niere", ["Länge 10–12 cm · Seitendifferenz < 1,5 cm", "Parenchymbreite ≥ 1,3 cm"]],
+  ["Gallenblasenwand|Gallenblase", "Gallenblase", ["Wand ≤ 3 mm", "Größe ≤ 10 x 4 cm"]],
+  ["Appendix(?: vermiformis)?", "Appendix", ["Durchmesser ≤ 6 mm · Wand ≤ 3 mm"]],
+  ["Dünndarmschlingen?|Dünndarm", "Dünndarm", ["Lumen < 3 cm · Wand ≤ 3 mm"]],
+  ["Kolon|Colon|Dickdarm|Zökum|Caecum|Coecum", "Kolon", ["3-6-9-Regel: Dünndarm < 3 cm · Kolon < 6 cm · Zökum < 9 cm"]],
+  ["Lymphknoten", "Lymphknoten", ["Kurzachse ≤ 10 mm (Faustregel)", "jugulodigastrisch & inguinal ≤ 15 mm · retrokrural ≤ 6 mm", "Form, Fetthilus, Nekrose mitbeurteilen"]],
+  ["Perikard", "Perikard", ["Dicke ≤ 2–3 mm · > 4 mm verdickt"]],
+  ["Herzschatten|Herzgröße", "Herz", ["Kardiothorakaler Quotient < 0,5 (p.a.-Aufnahme)"]],
+  ["Trachea", "Trachea", ["Koronar: Männer 13–25 mm · Frauen 10–21 mm"]],
+  ["Ventrikelsystem|Seitenventrikel|Liquorräume", "Ventrikel", ["Evans-Index < 0,3", "Weite altersabhängig mitbeurteilen"]],
+  ["Hypophyse", "Hypophyse", ["Höhe ≤ 8 mm", "junge Frauen bis 10 mm · Pubertät/Schwangerschaft bis 12 mm"]],
+  ["Spinalkanals?|Duralsack|Spinalkanalstenose", "Spinalkanal", ["LWS sagittal: 10–12 mm relativ, < 10 mm absolut eng", "Duralsack: < 100 mm² relativ, < 75 mm² absolut", "HWS sagittal: < 13 mm relativ, < 10 mm absolut"]],
+  ["Schilddrüsenlappen|Schilddrüse", "Schilddrüse", ["Volumen Frauen ≤ 18 ml · Männer ≤ 25 ml"]],
+  ["Prostata", "Prostata", ["Volumen ≤ 25–30 ml", "PSA-Dichte ≥ 0,15 ng/ml² erhöht"]],
+  ["Endometrium", "Endometrium", ["Postmenopausal ≤ 4 mm (ohne HRT)"]],
+  ["Harnblasenwand|Harnblase", "Harnblase", ["Wand ≤ 3 mm gefüllt · ≤ 5 mm entleert"]],
+  ["atlantodental(?:e[nr]?)?(?: Abstand)?|Dens", "Atlantodental", ["Abstand ≤ 3 mm (Erwachsene) · ≤ 5 mm (Kinder)"]],
+  ["prävertebral(?:e[nr]?)?(?: Weichteile| Weichteilgewebe)?", "Prävertebrale Weichteile", ["Höhe C2 ≤ 7 mm · C6 ≤ 22 mm (Erwachsene)"]],
+  ["akromiohumeral(?:e[nr]?)?(?: Abstand)?|Subakromialraum", "Akromiohumeraler Abstand", ["≥ 7 mm · < 7 mm V.a. Rotatorenmanschettenruptur"]],
+  ["V\\. cava inferior|Vena cava inferior|VCI", "V. cava inferior", ["Sono ≤ 2,1 cm mit > 50 % Atemvariabilität"]],
+  ["Achillessehne", "Achillessehne", ["Dicke ≤ 6 mm (sagittal)"]]
+].map(([rx, t, v]) => ({rx:new RegExp("(?<![\\p{L}])(?:" + rx + ")(?![\\p{L}])", "iu"), t, v}));
+S.nwOn = !store.get("nwOff", false);
+let NW_SEEN = null;
+function nwWrap(s){
+  if (!S.nwOn || !NW_SEEN || !s) return esc(s);
+  let best = null;
+  NW.forEach((e, i) => { if (NW_SEEN.has(i)) return; const m = e.rx.exec(s); if (m && (!best || m.index < best.m.index)) best = {m, i}; });
+  if (!best) return esc(s);
+  NW_SEEN.add(best.i);
+  const a = best.m.index, b = a + best.m[0].length;
+  return esc(s.slice(0, a)) + `<span class="nw" data-nw="${best.i}">${esc(best.m[0])}</span>` + nwWrap(s.slice(b));
+}
+const _unitHtml0 = unitHtml;
+unitHtml = function(n){ NW_SEEN = new Set(); try { return _unitHtml0(n); } finally { NW_SEEN = null; } };
+let nwTip = null;
+function nwShow(el){
+  const e = NW[+el.dataset.nw]; if (!e) return;
+  if (!nwTip){ nwTip = document.createElement("div"); nwTip.className = "nwtip"; nwTip.setAttribute("role", "tooltip"); document.body.appendChild(nwTip); }
+  nwTip.innerHTML = `<b>📏 ${esc(e.t)}</b>${e.v.map(x => `<span>${esc(x)}</span>`).join("")}<em>Richtwerte Erwachsene – Hausstandard beachten</em>`;
+  nwTip.classList.add("on");
+  const r = el.getBoundingClientRect(), tw = Math.min(300, innerWidth - 16);
+  nwTip.style.maxWidth = tw + "px";
+  const th = nwTip.offsetHeight, left = Math.max(8, Math.min(innerWidth - nwTip.offsetWidth - 8, r.left + r.width / 2 - nwTip.offsetWidth / 2));
+  const top = r.top - th - 8 > 8 ? r.top - th - 8 : r.bottom + 8;
+  nwTip.style.left = left + "px"; nwTip.style.top = top + "px";
+}
+const nwHide = () => { if (nwTip) nwTip.classList.remove("on"); };
+$("#detail").addEventListener("mouseover", e => { const el = e.target.closest && e.target.closest(".nw"); if (el) nwShow(el); });
+$("#detail").addEventListener("mouseout", e => { if (e.target.closest && e.target.closest(".nw")) nwHide(); });
+document.addEventListener("mouseover", e => { if (nwTip && nwTip.classList.contains("on") && !(e.target.closest && e.target.closest(".nw"))) nwHide(); }, true);
+document.addEventListener("keydown", nwHide, true);
+const _renderDetail1 = renderDetail;
+renderDetail = function(k){ nwHide(); return _renderDetail1(k); };
+const _setMode1 = setMode;
+setMode = function(m, q){ nwHide(); return _setMode1(m, q); };
+$("#detail").addEventListener("scroll", nwHide, {passive:true});
+$("#detail").addEventListener("click", e => {
+  const el = e.target.closest && e.target.closest(".nw");
+  if (el && window.matchMedia && window.matchMedia("(hover:none)").matches){ e.stopImmediatePropagation(); e.preventDefault(); nwShow(el); setTimeout(() => document.addEventListener("click", nwHide, {once:true}), 0); }
+}, true);
+function nwToggle(){ S.nwOn = !S.nwOn; _storeSet("nwOff", !S.nwOn); renderDetail(true); toast(S.nwOn ? "📏 Normwert-Hinweise an" : "Normwert-Hinweise aus"); }
+
+/* ---------- v17: 💉 km-helfer (eGFR & ESUR) ---------- */
+CALCS.kmgfr = {
+  title: "KM-Gabe – eGFR, Metformin & Allergie",
+  src: "ESUR Guidelines on Contrast Agents v10 (2018) · van der Molen AJ et al., Eur Radiol 2018;28:2845–2855 · eGFR nach CKD-EPI 2021 (Inker LA et al., N Engl J Med 2021;385:1737–1749) · die lokale SOP hat Vorrang",
+  fields: [
+    {id:"sex", label:"Geschlecht", type:"seg", opts:[["w", "weiblich"], ["m", "männlich"]], def:"w"},
+    {id:"age", label:"Alter", type:"num", unit:"Jahre"},
+    {id:"cr", label:"Kreatinin", type:"num", unit:"mg/dl"},
+    {id:"crU", label:"Einheit", type:"seg", opts:[["mg", "mg/dl"], ["umol", "µmol/l"]], def:"mg"},
+    {id:"egfr", label:"oder eGFR vom Labor (optional)", type:"num", unit:"ml/min/1,73 m²"},
+    {id:"route", label:"Applikation", type:"seg", col:true, opts:[["iv", "i.v. (z. B. CT)"], ["ia2", "i.a. mit Second-pass-Exposition der Niere (z. B. Becken-Bein-Angio)"], ["ia1", "i.a. mit First-pass-Exposition der Niere (z. B. Herzkatheter, Nierenarterien, Aorta suprarenal)"]], def:"iv"},
+    {id:"x", label:"Zusätzlich", type:"multi", opts:[["aki", "V.a. akute Nierenschädigung"], ["icu", "Intensivpatient"], ["met", "nimmt Metformin"], ["dial", "Dialyse"], ["all", "frühere KM-Reaktion"], ["thy", "Hyperthyreose / Autonomie"]]}
+  ],
+  compute(v){
+    const x = v.x || [], has = k => x.includes(k);
+    let eg = num(v.egfr), cr = num(v.cr), age = num(v.age), src = "Labor";
+    if (eg == null){
+      if (cr == null || age == null) return {incomplete:"Alter und Kreatinin eingeben – oder die eGFR direkt vom Labor."};
+      const mg = v.crU === "umol" ? cr / 88.4 : cr, f = v.sex === "w", ka = f ? 0.7 : 0.9, al = f ? -0.241 : -0.302;
+      eg = 142 * Math.pow(Math.min(mg / ka, 1), al) * Math.pow(Math.max(mg / ka, 1), -1.200) * Math.pow(0.9938, age) * (f ? 1.012 : 1);
+      src = "CKD-EPI 2021";
+    }
+    eg = Math.round(eg);
+    const stage = eg >= 90 ? "G1" : eg >= 60 ? "G2" : eg >= 45 ? "G3a" : eg >= 30 ? "G3b" : eg >= 15 ? "G4" : "G5";
+    const thr = (v.route === "ia1" || has("icu")) ? 45 : 30;
+    const dial = has("dial"), aki = has("aki"), risk = !dial && (aki || eg < thr);
+    const notes = [], doc = [];
+    const crTxt = cr != null && src !== "Labor" ? ` (Kreatinin ${fmtN(cr, 2)} ${v.crU === "umol" ? "µmol/l" : "mg/dl"})` : "";
+    doc.push(`eGFR ${src === "Labor" ? "laut Labor" : "(CKD-EPI 2021)"} ${eg} ml/min/1,73 m²${crTxt}.`);
+    let head, tone;
+    if (dial){
+      head = "Dialysepatient: KM-Gabe möglich – die Dialyse muss laut ESUR nicht an die KM-Gabe angepasst werden."; tone = "mid";
+      notes.push("Bei Restdiurese: KM-Menge möglichst gering halten.");
+      doc.push("Dialysepflichtiger Patient; KM-Gabe ohne Anpassung des Dialyseregimes gemäß ESUR.");
+    } else if (risk){
+      head = `Erhöhtes Risiko für eine KM-assoziierte Nierenschädigung (PC-AKI)${aki ? " – V.a. akute Nierenschädigung" : ` – eGFR < ${thr}`}.`; tone = "bad";
+      notes.push("Indikation prüfen: Alternative ohne jodhaltiges KM möglich? Nutzen-Risiko-Abwägung dokumentieren.");
+      notes.push("Prophylaktische Hydrierung nach SOP, z. B. **NaCl 0,9 % i.v. 1 ml/kg/h 3–4 h vor und 4–6 h nach** KM oder **Natriumbikarbonat 1,4 % 3 ml/kg/h 1 h vor** KM (Vorsicht bei Herzinsuffizienz).");
+      notes.push("Niedrigste diagnostisch ausreichende KM-Dosis; Kreatinin nach 48–72 h kontrollieren.");
+      doc.push(`Erhöhtes PC-AKI-Risiko gemäß ESUR (${aki ? "V.a. akute Nierenschädigung" : "eGFR < " + thr + " ml/min/1,73 m²" + (v.route === "ia1" ? " bei i.a.-Gabe mit First-pass-Exposition" : has("icu") ? " bei Intensivpatient" : "")}); prophylaktische Hydrierung, minimierte KM-Menge und Kreatininkontrolle nach 48–72 h empfohlen.`);
+    } else {
+      head = "Kein erhöhtes PC-AKI-Risiko laut ESUR – KM-Gabe ohne Prophylaxe."; tone = eg < thr + 15 ? "mid" : "ok";
+      if (eg < thr + 15) notes.push(`Knapp über der Grenze (${thr}) – auf ausreichende Trinkmenge achten.`);
+      doc.push("Kein erhöhtes Risiko für eine KM-assoziierte Nierenschädigung gemäß ESUR.");
+    }
+    if (has("met")){
+      const stop = !dial && (eg < 30 || aki || (v.route === "ia1" && eg < 45));
+      if (stop){ notes.push("**Metformin** ab der KM-Gabe pausieren, eGFR innerhalb von 48 h kontrollieren, bei stabiler Nierenfunktion wieder ansetzen."); doc.push("Metformin ab KM-Gabe pausieren; Wiederaufnahme nach Kontrolle der Nierenfunktion innerhalb von 48 h."); }
+      else { notes.push("**Metformin** kann normal weiter eingenommen werden (eGFR ≥ 30, keine akute Nierenschädigung)."); doc.push("Metformin kann unverändert weiter eingenommen werden."); }
+    }
+    if (has("all")){
+      notes.push("**Frühere KM-Reaktion:** anderes jodhaltiges KM wählen; laut ESUR keine routinemäßige Prämedikation (Evidenz gering) – Haus-SOP beachten; Notfallausrüstung bereithalten, Nachbeobachtung 30 min.");
+      doc.push("Anamnestisch frühere KM-Reaktion; Wechsel des KM-Präparats, Nachbeobachtung.");
+      if (tone === "ok") tone = "mid";
+    }
+    if (has("thy")){
+      notes.push("**Schilddrüse:** bei manifester Hyperthyreose jodhaltiges KM in der Regel kontraindiziert; bei Risiko (Autonomie, latente Hyperthyreose) Schilddrüsenblockade z. B. mit Perchlorat nach SOP, Endokrinologie einbinden.");
+      if (tone === "ok") tone = "mid";
+    }
+    return {cat:`eGFR ${eg} · ${stage}`, tone, head, notes, befund:doc.join(" "), beurteilung:"", to:"+"};
+  }
+};
+
+DATA.forEach(t => t.sections.forEach(x => { if (x.type === "calc" && x.calc === "kmgfr") x.title = CALCS.kmgfr.title; }));
+
+/* ---------- v17: 🔗 radiopaedia ---------- */
+S.rpen = store.get("rpen", {}) || {};
+const rpUrl = en => "https://radiopaedia.org/search?lang=gb&scope=articles&q=" + encodeURIComponent(en);
+const rpFallback = de => "https://www.google.com/search?q=" + encodeURIComponent("radiopaedia " + de);
+const rpClean = s => String(s || "").replace(/\*\*/g, "").replace(/\s*[–—-]\s*(Normalbefund|Standard.*|Vorlage)$/i, "").replace(/^(CT|MRT|Rö|Röntgen|Sono|DL)\s+/i, "").trim().slice(0, 100);
+function rpLink(de, label, cls, en){
+  de = rpClean(de); if (!de) return "";
+  const e = en || S.rpen[de.toLowerCase()];
+  return `<a class="${cls || "mini"} rp" href="${esc(e ? rpUrl(e) : rpFallback(de))}" target="_blank" rel="noopener" data-rp="${esc(de)}"${en ? ` data-rpen="${esc(en)}"` : ""} title="Auf Radiopaedia nachschlagen">${label}</a>`;
+}
+document.addEventListener("click", async e => {
+  const a = e.target.closest && e.target.closest("a.rp"); if (!a) return;
+  const de = a.dataset.rp, k = de.toLowerCase(), en = a.dataset.rpen || S.rpen[k];
+  if (en){ a.href = rpUrl(en); return; }
+  if (!S.ai) return;
+  e.preventDefault();
+  const w = window.open("about:blank", "_blank");
+  let url = rpFallback(de);
+  try {
+    const r = await S.ai.json(`Übersetze diesen deutschen radiologischen Begriff in den gebräuchlichen englischen Fachbegriff, wie er als Artikeltitel auf Radiopaedia.org stehen würde (z. B. „Akute Appendizitis“ → „Acute appendicitis“, „Nebennieren-Inzidentalom“ → „Adrenal incidentaloma“). Ist es eine Region oder Untersuchung, nimm den passenden englischen Begriff. Antworte nur als JSON: {"en":"..."}\n\nBegriff: ${de}`, {modelTier:"quick"});
+    const t = r && String(r.en || "").trim();
+    if (t){ S.rpen[k] = t.slice(0, 100); const ks = Object.keys(S.rpen); if (ks.length > 400) delete S.rpen[ks[0]]; _storeSet("rpen", S.rpen); url = rpUrl(t); }
+  } catch(x){}
+  if (w && !w.closed){ try { w.location.href = url; } catch(x){ window.open(url, "_blank"); } } else window.open(url, "_blank");
+});
+
+/* ---------- v17: 📑 quellen aus pubmed fürs lexikon ---------- */
+let MCP = undefined;
+async function mcpGet(){ if (MCP !== undefined) return MCP; try { MCP = (window.claude && window.claude.use) ? await window.claude.use("mcp") : null; } catch(e){ MCP = null; } return MCP; }
+function srcErr(e){
+  const c = e && e.code;
+  if (c === "server_not_connected" || c === "server_not_found") return "PubMed ist in deinem Claude-Konto nicht verbunden – unter claude.ai › Einstellungen › Konnektoren hinzufügen, dann nochmal klicken.";
+  if (c === "needs_reauth") return "Die PubMed-Verbindung ist abgelaufen – unter claude.ai › Einstellungen › Konnektoren neu verbinden.";
+  if (c === "selection_required") return "Mehrere PubMed-Verbindungen – bitte in der Abfrage oben eine auswählen und nochmal klicken.";
+  if (c === "not_in_manifest" || c === "approval_required" || c === "consent_required") return "Der Zugriff auf PubMed wurde nicht erlaubt. Beim nächsten Klick fragt Claude erneut.";
+  if (c === "blocked_by_policy") return "PubMed ist für dein Konto gesperrt.";
+  if (c === "not_granted" || c === "capability_disabled" || c === "capability_removed") return "Quellen gehen nur in der Claude-Version des Cockpits.";
+  if (c === "server_unavailable" || c === "rate_limited") return "PubMed antwortet gerade nicht – in einer Minute nochmal versuchen.";
+  if (c && aiErr) { const m = aiErr(e); if (m) return m; }
+  return "Quellen konnten nicht geladen werden – bitte nochmal versuchen.";
+}
+async function lxSources(i){
+  const t = S.lx.turns[i]; if (!t || t.role !== "assistant" || (t.src && t.src.busy) || !S.ai) return;
+  const q = (S.lx.turns.slice(0, i).reverse().find(x => x.role === "user") || {}).content || "";
+  t.src = {busy:true, items:[], err:""}; lxRenderChat();
+  try {
+    const mcp = await mcpGet(); if (!mcp) throw {code:"capability_disabled"};
+    const ans = String(t.content || "").slice(0, 3500);
+    let qs = await S.ai.json(`Formuliere 2 kurze englische PubMed-Suchanfragen (Stichworte, ohne Feld-Tags), mit denen man Leitlinien, Konsensuspapiere oder Übersichtsarbeiten zu den Kernaussagen dieser radiologischen Antwort findet. Nur ein JSON-Array mit 2 Strings.\n\nFRAGE: ${q}\n\nANTWORT:\n${ans}`, {modelTier:"quick"});
+    qs = (Array.isArray(qs) ? qs : []).map(x => String(x).trim()).filter(Boolean).slice(0, 2);
+    if (!qs.length) qs = [q];
+    const ids = [];
+    for (const qq of qs){
+      const r = await mcp.callTool("PubMed", "search_articles", {query:qq, max_results:6, sort:"relevance"});
+      const p = (r && r.payload) || {};
+      for (const id of (Array.isArray(p.pmids) ? p.pmids : [])) if (!ids.includes(String(id))) ids.push(String(id));
+    }
+    if (!ids.length){ t.src = {items:[], err:"PubMed hat dazu keine passenden Artikel gefunden."}; lxSave(); lxRenderChat(); return; }
+    const m = await mcp.callTool("PubMed", "get_article_metadata", {pmids:ids.slice(0, 10)});
+    const arts = (((m && m.payload) || {}).articles || []).map(a => {
+      const au = (a.authors || []), first = au[0] ? (au[0].last_name || "") + (au[0].initials ? " " + au[0].initials : "") : "";
+      return {pmid:String((a.identifiers || {}).pmid || ""), doi:String(a.doi || (a.identifiers || {}).doi || ""), title:String(a.title || "").replace(/\.$/, ""),
+        au:first + (au.length > 1 ? " et al." : ""), j:String((a.journal || {}).iso_abbreviation || (a.journal || {}).title || ""), y:String((a.publication_date || {}).year || ""),
+        ty:(a.article_types || []).join(", "), abs:String(a.abstract || "").slice(0, 650)};
+    }).filter(a => a.pmid && a.title);
+    if (!arts.length) throw {code:"tool_error"};
+    const list = arts.map((a, k) => `[${k + 1}] ${a.title} (${a.y}, ${a.j}; ${a.ty})\n${a.abs}`).join("\n\n");
+    let pick = await S.ai.json(`Hier ist eine radiologische Lexikon-Antwort und eine Liste von PubMed-Artikeln. Wähle bis zu 4 Artikel, die Kernaussagen der Antwort tatsächlich belegen – Leitlinien, Konsensus- und Übersichtsarbeiten sowie neuere Arbeiten bevorzugt. Passt keiner wirklich, gib [] zurück. Erfinde nichts.\nAntworte nur als JSON-Array: [{"n":1,"why":"welche Aussage er stützt – Deutsch, höchstens 14 Wörter"}]\n\nFRAGE: ${q}\n\nANTWORT:\n${ans}\n\nARTIKEL:\n${list}`, {modelTier:"default"});
+    pick = (Array.isArray(pick) ? pick : []).filter(x => x && arts[+x.n - 1]).slice(0, 4);
+    const items = pick.map(x => Object.assign({}, arts[+x.n - 1], {why:String(x.why || "").slice(0, 160), abs:undefined}));
+    t.src = {items, err:items.length ? "" : "Unter den gefundenen Artikeln belegt keiner die Antwort gut – frag gezielter (z. B. mit Leitlinie oder Klassifikation)."};
+  } catch(e){ t.src = {items:[], err:srcErr(e)}; }
+  lxSave(); lxRenderChat();
+}
+function lxSrcHtml(t){
+  const s = t.src; if (!s) return "";
+  if (s.busy) return `<div class="lxsrc"><div class="status"><span class="spin"></span>sucht in PubMed …</div></div>`;
+  if (!s.items.length) return `<div class="lxsrc"><div class="note">${esc(s.err || "Keine Quellen gefunden.")}</div></div>`;
+  return `<div class="lxsrc"><div class="lxsh">📑 Quellen laut PubMed</div>${s.items.map(a => `<div class="lxs"><a class="lxst" href="${esc(a.doi ? "https://doi.org/" + a.doi : "https://pubmed.ncbi.nlm.nih.gov/" + a.pmid + "/")}" target="_blank" rel="noopener">${esc(a.title)}</a><span class="lxsm">${esc([a.au, a.j, a.y].filter(Boolean).join(" · "))} · <a href="https://pubmed.ncbi.nlm.nih.gov/${esc(a.pmid)}/" target="_blank" rel="noopener">PubMed</a>${a.doi ? ` · <a href="https://doi.org/${esc(a.doi)}" target="_blank" rel="noopener">DOI ${esc(a.doi)}</a>` : ""}</span>${a.why ? `<span class="lxsw">↳ ${esc(a.why)}</span>` : ""}</div>`).join("")}${s.err ? `<div class="note">${esc(s.err)}</div>` : ""}</div>`;
+}
+function lxFootHtml(t, i){
+  if (S.lx.busy && i === S.lx.turns.length - 1) return "";
+  const q = (S.lx.turns.slice(0, i).reverse().find(x => x.role === "user") || {}).content || "";
+  const qShort = q.replace(/^(erklär mir genauer|erklär's mir)[:\s–-]*/i, "").split(/[?\n:–]/)[0].slice(0, 80);
+  const btn = S.ai && !(t.src && t.src.items && t.src.items.length) ? `<button class="add" data-lxsrc="${i}"${t.src && t.src.busy ? " disabled" : ""} title="Passende Leitlinien & Studien aus PubMed suchen">📑 Quellen</button>` : "";
+  return `<div class="lxfoot">${btn}${qShort ? rpLink(qShort, "🔗 Radiopaedia", "add") : ""}</div>` + lxSrcHtml(t);
+}
+$("#lexikon").addEventListener("click", e => { const b = e.target.closest("[data-lxsrc]"); if (b) lxSources(+b.dataset.lxsrc); });
+
 /* website-datei (für GitHub / Sicherung): echter <head> mit Icon & noindex */
 const GH_ICONS = "<link rel=\"icon\" type=\"image/svg+xml\" href=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjY2JhNmY3Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzg5YjRmYSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzk0ZTJkNSIvPjwvbGluZWFyR3JhZGllbnQ+PHJhZGlhbEdyYWRpZW50IGlkPSJoIiBjeD0iLjUiIGN5PSIuMzgiIHI9Ii43NSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMmIyYjNmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTUxNTFjIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTUiIGZpbGw9InVybCgjaCkiLz48Y2lyY2xlIGN4PSIzMSIgY3k9IjI5IiByPSIxNi41IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZykiIHN0cm9rZS13aWR0aD0iOC41Ii8+PGNpcmNsZSBjeD0iMzEiIGN5PSIyOSIgcj0iNCIgZmlsbD0iI2Y1YzJlNyIvPjxyZWN0IHg9IjgiIHk9IjQ0LjUiIHdpZHRoPSI0NiIgaGVpZ2h0PSI1IiByeD0iMi41IiBmaWxsPSIjZmFiMzg3Ii8+PHBhdGggZD0iTTUzIDkuNWwxLjYgNCA0IDEuNi00IDEuNi0xLjYgNC0xLjYtNC00LTEuNiA0LTEuNnoiIGZpbGw9IiNmOWUyYWYiLz48L3N2Zz4=\">\n<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"data:image/png;base64,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\">\n<link rel=\"apple-touch-icon\" href=\"data:image/png;base64,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\">\n<meta name=\"theme-color\" content=\"#17171c\">\n<meta name=\"apple-mobile-web-app-title\" content=\"Cockpit\">\n";
 (() => { const l = document.querySelector('link[rel~="icon"][type="image/svg+xml"]'); if (l) $("#logo").src = l.href; })();
@@ -5033,6 +5512,8 @@ $("#helpbtn").onclick = () => {
   <tr><td><kbd>Strg Enter</kbd> (Trainer)</td><td>Befund prüfen · 📝 = nur Beurteilung</td></tr>
   <tr><td>⠿ ziehen</td><td>Favoriten (Liste ⭐) und Bausteine (im Bearbeiten) sortieren</td></tr>
   <tr><td>🛡</td><td>Vor jedem Senden an Claude: Namen, Geburtsdaten, Nummern … werden erkannt und auf Wunsch geschwärzt</td></tr>
+  <tr><td>📏 unterstrichen</td><td>Normwert beim Drüberfahren (Strg K → „Normwert-Hinweise“ zum Ausschalten)</td></tr>
+  <tr><td>🏅 · 🔗 · 📑</td><td>Befundqualitäts-Score & Abzeichen (Lernen) · Radiopaedia · Quellen aus PubMed (Lexikon)</td></tr>
   <tr><td>🕘 · 🧹</td><td>Versionsverlauf jeder Vorlage · Aufräumen (Start oder Strg K)</td></tr></table>
   <p style="font-size:13px;color:var(--mute);margin:10px 0 0"><b>✍️ Trainer:</b> Befund einfügen → Warnung, Version 1 & 2, zwei Beurteilungen, 3 Lerntipps – jeder Teil mit eigenem Kopierknopf. „✍️ Prüfen“ im Baukasten schickt deinen zusammengebauten Befund direkt dorthin. · <b>📚 Lexikon:</b> Normwerte, Klassifikationen, DD, Formulierungen; 📚 bei jeder Vorlage fragt direkt nach. · <b>Mehrere Tabs:</b> Jeder Browser-Tab merkt sich seinen Bereich. Ist z. B. ein Tab auf „Trainer“, landen „Prüfen“-Aufträge aus den anderen Tabs dort.</p>
   <p style="font-size:13px;color:var(--mute);margin:10px 0 0"><b>Bearbeiten:</b> „✏️ Bearbeiten“ oben bei jeder Vorlage, „＋ Neue Vorlage“ oben in der Liste. Mit „💾 Speichern“ dauerhaft sichern.</p>
