@@ -692,7 +692,7 @@ body.dragsort,body.dragsort *{cursor:grabbing!important;user-select:none!importa
 </div>
 <div class="toast" id="toast"></div>
 <div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
-<script type="text/plain" id="data" data-saved="2026-10-29T10:23:07+00:00">
+<script type="text/plain" id="data" data-saved="2026-10-29T10:51:03+00:00">
 === CT | Kopf/Hals | Schädel nativ | cct ccct schädel kopf blutung | fav
 ## Standardbefund
 Technik: Natives Schädel-CT.
@@ -784,7 +784,7 @@ Homogenes Schilddrüsenparenchym.
 Bds. axillär, mediastinal sowie hilär kein Nachweis pathologisch vergrößerter Lymphknoten.
 
 Normgroßes Herz. Kein Nachweis eines Perikardergusses.
-Die zentralen mediastinalen Gefäße normkalibrig [und [regelrecht/portalvenös regelrecht] kontrastiert].
+Die zentralen mediastinalen Gefäße normkalibrig [und [regelrecht kontrastiert/portalvenös regelrecht kontrastiert/nativ nicht kontrastiert]].
 
 Das zentrale Tracheobronchialsystem regulär belüftet.
 Reguläre Struktur und Dichte beider Lungen.
@@ -843,7 +843,7 @@ Keine Vorbilder zum Vergleich vorliegend.
 Partiell mitabgebildete Lungenbasen unauffällig, kein Pleuraerguss.
 
 Leber normgroß, glatt berandet, keine suspekten fokalen Läsionen.
-[Lebervenen und Pfortader [regelrecht/portalvenös regelrecht] kontrastiert.]
+[Lebervenen und Pfortader [regelrecht kontrastiert/portalvenös regelrecht kontrastiert/nativ nicht kontrastiert].]
 Gallenblase mäßig gefüllt, zartwandig, keine röntgendichten Konkremente.
 Intra- und extrahepatische Gallengänge schlank.
 
@@ -866,8 +866,8 @@ Kein Aszites, keine freie intraabdominelle Luft.
 
 Keine pathologisch konfigurierten abdominellen, pelvinen oder, soweit mitabgebildet, inguinalen Lymphknoten.
 
-Abdominelle Aorta normkalibrig [und [regelrecht/portalvenös regelrecht] kontrastiert].
-[Viszeral-, Nieren- und Beckenarterien [regelrecht/portalvenös regelrecht] kontrastiert.]
+Abdominelle Aorta normkalibrig [und [regelrecht kontrastiert/portalvenös regelrecht kontrastiert/nativ nicht kontrastiert]].
+[Viszeral-, Nieren- und Beckenarterien [regelrecht kontrastiert/portalvenös regelrecht kontrastiert/nativ nicht kontrastiert].]
 
 Keine Bauchwandhernien.
 Keine suspekten Weichteil- oder Knochenläsionen.
@@ -897,7 +897,7 @@ Homogenes Schilddrüsenparenchym.
 Bds. axillär, mediastinal sowie hilär kein Nachweis pathologisch vergrößerter Lymphknoten.
 
 Normgroßes Herz. Kein Nachweis eines Perikardergusses.
-Die zentralen mediastinalen Gefäße normkalibrig [und [regelrecht/portalvenös regelrecht] kontrastiert].
+Die zentralen mediastinalen Gefäße normkalibrig [und [regelrecht kontrastiert/portalvenös regelrecht kontrastiert/nativ nicht kontrastiert]].
 
 Das zentrale Tracheobronchialsystem regulär belüftet.
 Reguläre Struktur und Dichte beider Lungen.
@@ -906,7 +906,7 @@ Kein Nachweis von Pleuraergüssen.
 
 ABDOMEN:
 Leber normgroß, glatt berandet, keine suspekten fokalen Läsionen.
-[Lebervenen und Pfortader [regelrecht/portalvenös regelrecht] kontrastiert.]
+[Lebervenen und Pfortader [regelrecht kontrastiert/portalvenös regelrecht kontrastiert/nativ nicht kontrastiert].]
 Gallenblase mäßig gefüllt, zartwandig, keine röntgendichten Konkremente.
 Intra- und extrahepatische Gallengänge schlank.
 
@@ -929,8 +929,8 @@ Kein Aszites, keine freie intraabdominelle Luft.
 
 Keine pathologisch konfigurierten abdominellen, pelvinen oder, soweit mitabgebildet, inguinalen Lymphknoten.
 
-Abdominelle Aorta normkalibrig [und [regelrecht/portalvenös regelrecht] kontrastiert].
-[Viszeral-, Nieren- und Beckenarterien [regelrecht/portalvenös regelrecht] kontrastiert.]
+Abdominelle Aorta normkalibrig [und [regelrecht kontrastiert/portalvenös regelrecht kontrastiert/nativ nicht kontrastiert]].
+[Viszeral-, Nieren- und Beckenarterien [regelrecht kontrastiert/portalvenös regelrecht kontrastiert/nativ nicht kontrastiert].]
 
 WEICHTEILE & SKELETTSYSTEM:
 Keine Bauchwandhernie.
@@ -3325,7 +3325,7 @@ function tokenizeLine(s, ctr){
         if (buf){ pushText(out, buf); buf = ""; }
         const inner = str.slice(p + 1, j);
         if (inner === "XXX") out.push({t:"x", i:ctr.n++});
-        else if (!/[\[\]]/.test(inner) && inner.includes("/") && inner.split("/").every(o => o.trim() && o.trim().length <= 32)) out.push({t:"c", i:ctr.n++, opts:inner.split("/").map(o => o.trim()), raw:inner});
+        else if (!/[\[\]]/.test(inner) && inner.includes("/") && inner.split("/").every(o => o.trim() && o.trim().length <= 45)) out.push({t:"c", i:ctr.n++, opts:inner.split("/").map(o => o.trim()), raw:inner});
         else { const i = ctr.n++; out.push({t:"o", i, raw:inner, kids:parse(inner)}); }
         p = j + 1; continue;
       }
@@ -5475,14 +5475,17 @@ function lxFootHtml(t, i){
 }
 $("#lexikon").addEventListener("click", e => { const b = e.target.closest("[data-lxsrc]"); if (b) lxSources(+b.dataset.lxsrc); });
 
-/* ---------- v18: 🧪 technik-baukasten (thorax-abdomen / staging) ---------- */
+/* ---------- v18: 🧪 technik-baukasten (hals / thorax / abdomen / staging) ---------- */
 S.tech = {};
 const TECH_PV = ["Hals", "Thorax", "Abdomen"];
 const TECH_X = [["nat", "Oberbauch nativ"], ["art", "Oberbauch arteriell"], ["artth", "Thorax arteriell"], ["spaet", "Spätphase Harnwege"], ["oral", "orales KM"]];
-const techOn = t => t && t.mod === "CT" && /thorax-abdomen|staging/i.test(t.title + " " + t.keys) && t.sections.some(s => (s.type === "block" || s.type === "variant") && /^Technik:/m.test(s.text || ""));
 const TECH_GEN = {Hals:"des Halses", Thorax:"des Thorax", Abdomen:"des Abdomens", Oberbauch:"des Oberbauchs"};
+const techSrc = t => { for (const s of t.sections) if (s.type === "block" || s.type === "variant"){ const m = /^Technik:.*$/m.exec(s.text || ""); if (m) return m[0]; } return ""; };
+const techOn = t => t && t.mod === "CT" && /CT-Untersuchung (des|von) (Halses|Thorax|Abdomens)/.test(techSrc(t));
+function techDefault(t){ const l = techSrc(t); return {pv:TECH_PV.filter(r => l.includes(r === "Hals" ? "Halses" : r)), x:[], km:"pv"}; }
 function techLine(st){
-  const pv = TECH_PV.filter(r => st.pv.includes(r)), x = k => st.x.includes(k);
+  const pv = TECH_PV.filter(r => st.pv.includes(r)), x = k => st.x.includes(k), reg = joinDe(pv.map(r => TECH_GEN[r]));
+  if (st.km === "nat") return (pv.length ? "Technik: Native CT-Untersuchung " + reg : "Technik: Native CT-Untersuchung") + (x("oral") ? " nach oraler Kontrastierung" : "") + ".";
   const artR = [x("artth") ? "Thorax" : null, x("art") ? "Oberbauch" : null].filter(Boolean);
   const ex = [];
   if (x("nat") && artR.length === 1 && artR[0] === "Oberbauch") ex.push("native Untersuchung und arterielle Kontrastmittelphase des Oberbauchs");
@@ -5491,7 +5494,7 @@ function techLine(st){
     if (artR.length) ex.push("arterielle Kontrastmittelphase " + joinDe(artR.map(r => TECH_GEN[r])));
   }
   if (x("spaet")) ex.push("Spätphase der ableitenden Harnwege");
-  let s = pv.length ? "Technik: CT-Untersuchung " + joinDe(pv.map(r => TECH_GEN[r])) + " in portalvenöser Kontrastmittelphase" + (ex.length ? ", ergänzend " + joinDe(ex) : "")
+  let s = pv.length ? "Technik: CT-Untersuchung " + reg + " in portalvenöser Kontrastmittelphase" + (ex.length ? ", ergänzend " + joinDe(ex) : "")
     : "Technik: CT-Untersuchung" + (ex.length ? " mit " + joinDe(ex) : "");
   if (x("oral")) s += " nach oraler Kontrastierung";
   return s + ".";
@@ -5502,11 +5505,12 @@ function techText(t, text){
 }
 function techHtml(t){
   if (!techOn(t)) return "";
-  const st = S.tech[t.id], cur = st || {pv:["Thorax", "Abdomen"], x:[]};
+  const st = S.tech[t.id], cur = st || techDefault(t), nat = cur.km === "nat";
   const chip = (k, lab, on) => `<button type="button" class="tchip${on ? " on" : ""}" data-tech="${k}" aria-pressed="${on}">${on ? "✓ " : ""}${esc(lab)}</button>`;
-  return `<div class="tech"><div class="tech-h"><b>🧪 Technik</b><span class="note">${st ? esc(techLine(st)) : "wie im Standardbefund – zum Anpassen Phasen antippen"}</span>${st ? '<button class="mini" data-tech="reset" title="Technikzeile wie in der Vorlage">↺ Original</button>' : ""}</div>
-    <div class="tech-r"><span class="tech-l">Portalvenös</span>${TECH_PV.map(r => chip("pv:" + r, r, cur.pv.includes(r))).join("")}</div>
-    <div class="tech-r"><span class="tech-l">Zusätzlich</span>${TECH_X.map(([k, l]) => chip("x:" + k, l, cur.x.includes(k))).join("")}</div></div>`;
+  return `<div class="tech"><div class="tech-h"><b>🧪 Technik</b><span class="note">${st ? esc(techLine(st)) : "wie im Standardbefund – zum Anpassen antippen"}</span>${st ? '<button class="mini" data-tech="reset" title="Technikzeile wie in der Vorlage">↺ Original</button>' : ""}</div>
+    <div class="tech-r"><span class="tech-l">Regionen</span>${TECH_PV.map(r => chip("pv:" + r, r, cur.pv.includes(r))).join("")}</div>
+    <div class="tech-r"><span class="tech-l">Kontrast</span>${chip("km:pv", "portalvenös", !nat)}${chip("km:nat", "nativ (ohne KM)", nat)}</div>
+    <div class="tech-r"><span class="tech-l">Zusätzlich</span>${TECH_X.filter(([k]) => !nat || k === "oral").map(([k, l]) => chip("x:" + k, l, cur.x.includes(k))).join("")}</div></div>`;
 }
 $("#detail").addEventListener("click", e => {
   const b = e.target.closest("[data-tech]"); if (!b || S.edit || S.view) return;
@@ -5516,11 +5520,19 @@ $("#detail").addEventListener("click", e => {
   for (const key of Object.keys(S.fill)) if (key.startsWith(t.id + ":") && key.split(":").length === 2) delete S.fill[key];
   if (k === "reset") delete S.tech[t.id];
   else {
-    const st = S.tech[t.id] = S.tech[t.id] || {pv:["Thorax", "Abdomen"], x:[]};
-    const [g, v] = k.split(":"), arr = st[g], i = arr.indexOf(v);
-    i < 0 ? arr.push(v) : arr.splice(i, 1);
+    const st = S.tech[t.id] = S.tech[t.id] || techDefault(t);
+    const [g, v] = k.split(":");
+    if (g === "km") st.km = v;
+    else { const arr = st[g], i = arr.indexOf(v); i < 0 ? arr.push(v) : arr.splice(i, 1); }
   }
   renderDetail(true);
+  if (S.tech[t.id] && S.tech[t.id].km === "nat"){   /* nativ → gefäßzeilen automatisch „nativ nicht kontrastiert“ */
+    let hit = false;
+    S.units.forEach(u => { if (u.item) return; const f = S.fill[u.key] = S.fill[u.key] || {};
+      const walk = (ts, par) => ts.forEach(tk => { if (tk.t === "o") walk(tk.kids, tk); else if (tk.t === "c" && tk.opts.includes("nativ nicht kontrastiert")){ f[tk.i] = "nativ nicht kontrastiert"; if (par) f[par.i] = "on"; hit = true; } });
+      toksOf(u.text).forEach(l => walk(l, null)); });
+    if (hit){ renderDetail(true); toast("Gefäße auf „nativ nicht kontrastiert“ gesetzt"); }
+  }
   if (S.kit.base && S.kit.base.tpl === t.id){ const u = S.units.find(x => x.main); if (u){ S.kit.base.raw = u.text; S.kit.base.text = u.text; } renderKit(); }
 }, true);
 
