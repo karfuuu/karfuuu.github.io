@@ -656,6 +656,12 @@ body.dragsort,body.dragsort *{cursor:grabbing!important;user-select:none!importa
 .tchip:hover{color:var(--ink);background:var(--hover)}
 .tchip.on{background:color-mix(in srgb,var(--tc) 18%,var(--bg));border-color:var(--tc);color:var(--ink);font-weight:600}
 @media (max-width:640px){ .tech-l{width:100%} }
+/* ---------- v19: modalitäts-überschriften bei favoriten ---------- */
+.grp.mgrp{margin:10px 8px 3px;padding:4px 8px;border-radius:7px;font-size:11.5px;font-weight:700;letter-spacing:.06em;color:var(--gc);background:color-mix(in srgb,var(--gc) 13%,transparent);box-shadow:inset 3px 0 0 var(--gc)}
+.grp.mgrp:first-of-type{margin-top:4px}
+.grp.mgrp .dot{background:var(--gc);width:7px;height:7px}
+.grp.mgrp .mgn{margin-left:auto;font-size:10.5px;font-weight:650;letter-spacing:0;color:var(--gc);opacity:.8}
+.favhint+.grp.mgrp{margin-top:2px}
 </style>
 </head>
 <body>
@@ -692,7 +698,7 @@ body.dragsort,body.dragsort *{cursor:grabbing!important;user-select:none!importa
 </div>
 <div class="toast" id="toast"></div>
 <div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
-<script type="text/plain" id="data" data-saved="2026-10-29T11:10:11+00:00">
+<script type="text/plain" id="data" data-saved="2026-10-29T11:39:45+00:00">
 === CT | Kopf/Hals | Schädel nativ | cct ccct schädel kopf blutung | fav
 ## Standardbefund
 Technik: Natives Schädel-CT.
@@ -2718,7 +2724,7 @@ function renderList(autoselect){
   if (q){
     const toks = q.split(/\s+/);
     items = DATA.map(t=>[t,score(t,toks)]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]||sortStd(a[0],b[0])).map(x=>x[0]);
-  } else if (S.filter==="fav"){ items = DATA.filter(isFav).sort(sortStd); if (S.favOrd){ const o = [...S.favs]; items.sort((a,b) => o.indexOf(key(a)) - o.indexOf(key(b))); } }
+  } else if (S.filter==="fav"){ items = DATA.filter(isFav).sort(sortStd); if (S.favOrd){ const o = [...S.favs]; items.sort((a,b) => o.indexOf(key(a)) - o.indexOf(key(b))); } items.sort((a,b) => MODS.indexOf(a.mod) - MODS.indexOf(b.mod)); }
   else if (S.filter==="recent"){ items = S.recent.map(k=>DATA.find(t=>key(t)===k)).filter(Boolean); }
   else if (S.filter==="all"){ items = DATA.slice().sort(sortStd); }
   else if (S.filter==="top"){ items = DATA.filter(t=>S.use[key(t)]).sort((a,b)=>S.use[key(b)]-S.use[key(a)]||sortStd(a,b)); }
@@ -2732,14 +2738,14 @@ function renderList(autoselect){
           : S.filter==="top" ? `<div class="empty">Noch nichts gezählt. Das Cockpit zählt mit, welche Vorlagen du kopierst (auf diesem Gerät).</div>`
           : `<div class="empty">Noch nichts geöffnet.</div>`;
   }
-  const grouped = !q && S.filter!=="recent" && S.filter!=="top" && S.filter!=="fav";
+  const grouped = !q && S.filter!=="recent" && S.filter!=="top";
   const sortable = !q && S.filter==="fav" && items.length > 1;
   if (sortable && !S.favOrd) h += `<div class="favhint">⠿ rechts am Eintrag ziehen = eigene Reihenfolge</div>`;
   let lastMod = null, lastReg = null;
   for (const t of items){
     if (grouped){
       if (S.filter==="fav" || S.filter==="all" || S.filter==="calc"){
-        if (t.mod!==lastMod){ h += `<div class="grp" style="--gc:${col(t.mod)}"><span class="dot"></span>${esc(t.mod)}</div>`; lastMod=t.mod; lastReg=null; }
+        if (t.mod!==lastMod){ h += `<div class="grp${S.filter==="fav" ? " mgrp" : ""}" style="--gc:${col(t.mod)}"><span class="dot"></span>${esc(t.mod)}${S.filter==="fav" ? `<span class="mgn">${items.filter(x => x.mod === t.mod).length}</span>` : ""}</div>`; lastMod=t.mod; lastReg=null; }
         if (S.filter==="all" && t.region!==lastReg){ h += `<div class="sub">${regIcon(t.region)}${esc(t.region)}</div>`; lastReg=t.region; }
       } else if (t.region!==lastReg){ h += `<div class="grp"${MODS.includes(S.filter) ? ` style="--gc:${col(S.filter)}"` : ""}>${regIcon(t.region)}${esc(t.region)}</div>`; lastReg=t.region; }
     }
@@ -4911,6 +4917,7 @@ function favReorder(order){
 dragSort($("#list"), ".li", ".grip", (from, to, el, all) => {
   if (S.filter !== "fav" || S.q.trim()) return;
   favReorder(all.map(li => DATA[+li.dataset.id]).filter(Boolean).map(key));
+  renderList(false);
   toast("↕ Reihenfolge gespeichert");
 });
 dragSort($("#detail"), ".eitem", ".grip", (from, to, el) => {
